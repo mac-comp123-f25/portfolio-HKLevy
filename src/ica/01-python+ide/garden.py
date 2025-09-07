@@ -1,6 +1,6 @@
 """
 ICA on Sep. 5. Computes how many flowers will fit in a garden
-when spaced 6 inches apart in precise rows adn columns.
+when spaced 6 inches apart in precise rows and columns.
 
 @author Helen Levy (hlevy@macalester.edu
 """
