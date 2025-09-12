@@ -1,16 +1,10 @@
 import turtle
 wn = turtle.Screen()
 t=turtle.Turtle()
-t.speed(2)
-
-'''
-Get points of the hexagon.
-Every other one will be the pac-man shape
-The others will be drawn.'''
-
-'''This is still not what I want it to look like but it's much closer.'''
+t.speed(8)
 
 pts=[]
+t.up()
 t.goto(0,-150)
 t.lt(30)
 for x in range(6):
@@ -28,6 +22,7 @@ t.rt(30) #because it should start facing the way it came from
 for x in range(len(pts)):
     t.goto(pts[x])
     if x%2==0:
+        t.down()
         t.lt(90)
         t.fillcolor('black')
         t.begin_fill()
@@ -38,7 +33,9 @@ for x in range(len(pts)):
         t.fd(30)
         t.end_fill()
         t.lt(60)
+        t.up()
     else:
+        t.down()
         t.lt(120)
         t.fd(50)
         t.bk(50)
@@ -46,5 +43,6 @@ for x in range(len(pts)):
         t.fd(50)
         t.bk(50)
         t.rt(90)
+        t.up()
 
 wn.exitonclick()
