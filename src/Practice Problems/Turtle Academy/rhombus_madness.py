@@ -1,11 +1,22 @@
+"""
+Draws randomly placed and shaped rhombuses.
+
+@author: Helen K. Levy (hlevy@macalester.edu)
+
+@ref: pythonturtle.academy/rhombus-madness/
+"""
+
+
 import random
 import turtle
+
+#establishes the Screen, Turtle, and possible colors
 wn = turtle.Screen()
 t = turtle.Turtle()
-
 colors=["#dee9fc","#6395f2","#1258dc","#0a337f","#091834"]
 
 for x in range(50):
+    #establishes a random place and angle to start, a random color, and a random shape for each rhombus
     start_x = random.randrange(-300, 300)
     start_y = random.randrange(-300, 300)
     start_angle = random.randrange(0, 360)
@@ -14,11 +25,11 @@ for x in range(50):
     size = random.randrange(50, 101)
     angle = random.randrange(10, 80)
 
+    #draws the rhombus
     t.penup()
     t.goto(start_x,start_y)
     t.pendown()
     t.rt(start_angle)
-
     t.fillcolor(color)
     t.begin_fill()
     for y in range(2):

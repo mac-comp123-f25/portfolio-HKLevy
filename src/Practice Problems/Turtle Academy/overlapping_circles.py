@@ -1,18 +1,27 @@
-'''radius of each of n circles needs to be bigger
-than the circle of their centers so they overlap'''
+"""
+Draws some positive integer n overlapping circles
 
+@author: Helen K. Levy (hlevy@macalester.edu)
+
+@ref: pythonturtle.academy/n-overlapping-circle-with-python-and-turtle/
+"""
 import turtle
+
+#establishes the parameters for the drawing
+n = int(input("How many circles do you want? "))
+n_radius = int(input("How big should each circle be? Recommended 80-150. "))
+overlap = int(input("By how much should the circles overlap? Recommended 15-30. "))
+central_radius = n_radius - overlap
+
+#establishes the Screen and Turtle
 wn = turtle.Screen()
 t = turtle.Turtle()
-t.speed(8)
-
-n = int(input("How many circles do you want? "))
-central_radius = 100
-n_radius = 125
-
 t.up()
+t.speed(8)
 t.goto(0,-central_radius)
 t.down()
+
+#draws the circles
 for x in range(n):
     t.dot(5)
     t.up()

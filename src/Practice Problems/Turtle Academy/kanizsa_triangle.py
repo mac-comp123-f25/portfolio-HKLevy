@@ -1,12 +1,23 @@
+"""
+Draws a Kanizsa Triangle.
+
+@author: Helen K. Levy (hlevy@macalester.edu)
+
+@ref: pythonturtle.academy/kanizsa-triangle-with-python-turtle/
+"""
 import turtle
+
+
+#establishes the Screen, Turtle, and its initial position
 wn = turtle.Screen()
 t=turtle.Turtle()
 t.speed(8)
-
-pts=[]
 t.up()
 t.goto(0,-150)
 t.lt(30)
+
+#collects coordinate points for each of the 6 important corners of the 2 triangles
+pts=[]
 for x in range(6):
     xcor=int(t.xcor())
     ycor=int(t.ycor())
@@ -14,14 +25,13 @@ for x in range(6):
     t.fd(100)
     t.lt(60)
 
-t.rt(30) #heading is now 0
+#makes the turtle's heading the way it should be for the loop
+t.rt(60)
 
-# i want the turtle to end its drawing at
-# every corner facing towards the next corner.
-t.rt(30) #because it should start facing the way it came from
 for x in range(len(pts)):
     t.goto(pts[x])
     if x%2==0:
+        #draws the pac-man shape at the corners of one triangle
         t.down()
         t.lt(90)
         t.fillcolor('black')
@@ -35,6 +45,7 @@ for x in range(len(pts)):
         t.lt(60)
         t.up()
     else:
+        #draws the lines at the corners of the other triangle
         t.down()
         t.lt(120)
         t.fd(50)
