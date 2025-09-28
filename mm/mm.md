@@ -1,6 +1,6 @@
 # Mind Maps
 
-## Creativity
+## Example on Creativity
 
 ![0808-mind_map_example.jpg](0808-mind_map_example.jpg)
 
@@ -15,3 +15,11 @@
 
 ## Modules
 ![0910-modules.jpg](0910-modules.jpg)
+
+## Functions
+![0912-function_basics.jpg](0912-function_basics.jpg)
+![0915-function_decomposition.jpg](0915-function_decomposition.jpg)
+![0917-function_practice.jpg](0917-function_practice.jpg)
+
+## Booleans and Selection
+![0926-bool_selection.jpg](0926-bool_selection.jpg)
