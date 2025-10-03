@@ -54,7 +54,7 @@ def graph_sin_theta_transformation(color,domain_start,domain_end,center_x,center
     """
     setup_turtle(color,2,center_x,center_y)
 
-    true_rotation = petals * math.radians(rotation*petals)
+    true_rotation = petals * math.radians(rotation)
     for a in range(domain_start,domain_end):
         theta = math.radians(a)
         r = size * math.sin(petals*theta - true_rotation)
@@ -80,7 +80,7 @@ def graph_cos_theta_transformation(color,domain_start,domain_end,center_x,center
     :return: None"""
     setup_turtle(color,2,center_x,center_y)
 
-    true_rotation = petals * math.radians(rotation*petals) #something is off here. not sure what.
+    true_rotation = petals * math.radians(rotation)
     for a in range(domain_start,domain_end):
         theta = math.radians(a)
         r = size * math.cos(petals*theta - true_rotation)
@@ -93,15 +93,56 @@ def graph_cos_theta_transformation(color,domain_start,domain_end,center_x,center
         else:
             t.goto(x,y)
 
+def graph_sin_theta_degree(color,start_x,start_y,size,degree):
+    """Graphs the function r = size * sin(theta) ** degree.
+    :param color: The color of the graph's curve
+    :param start_x: The x coordinate of the starting point
+    :param start_y: The y coordinate of the starting point
+    :param size: The farthest away from the starting point the graph will get
+    :param degree: The degree that sin(theta) is raised to
+    :return: None"""
+    setup_turtle(color,2,start_x,start_y)
+
+    for a in range(180):
+        theta=math.radians(a)
+        r = size * math.sin(theta) ** degree
+        x = r * math.cos(theta) + start_x
+        y = r * math.sin(theta) + start_y
+        if a==0:
+            t.up()
+            t.goto(x,y)
+            t.down()
+        else:
+            t.goto(x,y)
 #sets up the turtle and screen
 win = turtle.Screen()
 t = turtle.Turtle()
 t.speed(0)
 
-draw_axes(275,0,0)
-# graph_sin_theta_transformation('red',0,180,0,0,100,5,0)
-# graph_sin_theta_transformation('blue',0,180,0,0,50,5,36)
-graph_cos_theta_transformation('purple',0,360,0,0,100,2,0)
-graph_cos_theta_transformation('green',0,360,0,0,50,2,45)
+# draw_axes(275,0,0)
+# graph_sin_theta_transformation('red',0,180,0,0,100,3,0)
+# graph_sin_theta_transformation('blue',0,180,0,0,100,3,40)
+# graph_sin_theta_transformation('green',0,180,0,0,100,3,80)
 
+# graph_cos_theta_transformation('purple',0,360,0,0,50,2,0)
+# graph_cos_theta_transformation('green',0,360,0,0,50,2,30)
+# graph_cos_theta_transformation('red',0,360,0,0,50,2,60)
+
+# graph_sin_theta_transformation('red',0,180,0,0,100,5,0)
+# """The two calls below accomplish the same thing"""
+# graph_sin_theta_transformation('blue',0,180,0,0,-100,5,0)
+# graph_sin_theta_transformation('green',0,180,0,0,100,5,180)
+
+"""Every call of cosThetaTransformations can also be represented with sinThetaTransformations"""
+
+for x in range(-250,251,50):
+    for y in range(-250,251,50):
+        print(x,y)
+
+#
+# draw_axes(100,-150,0)
+# draw_axes(100,150,0)
+# graph_sin_theta_transformation('red',0,180,-150,0,75,3,0)
+# # graph_cos_theta_transformation('blue',0,180,150,0,75,3,-90)
+# graph_sin_theta_degree('blue',150,0,75,3)
 win.exitonclick()
