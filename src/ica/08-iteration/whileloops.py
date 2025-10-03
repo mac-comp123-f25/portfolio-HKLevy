@@ -70,9 +70,9 @@ def sum_to_n(top_num):
     curr_val = 0  # loop variable
     total = 0    # accumulator variable
     while curr_val <= top_num:
-        total = total + curr_val
-        curr_val = curr_val + 1 #Logical error - used to be 3, not 1.
         print(total,curr_val)
+        total = total + curr_val
+        curr_val = curr_val + 1 #Error - used to be 3, not 1.
     return total
 
 
@@ -101,6 +101,7 @@ def print_seperator_line():
 
 
 def add_user_nums():
+    """Adds numbers together until 0 is entered."""
     sum_of_nums = 0
     mynum = input("Enter a number: ")
     myint = int(mynum)
@@ -108,6 +109,7 @@ def add_user_nums():
         sum_of_nums = sum_of_nums + myint
         mynum = input("Enter a number: ")
         myint = int(mynum)
+    print(sum_of_nums)
 
 
 if __name__ == '__main__':
@@ -119,8 +121,21 @@ if __name__ == '__main__':
     print_every_other(4)
 
     print_seperator_line()
+    print("Sample calls to printEveryFifth:")
+    print("printEveryFifth(11) does:")
+    print_every_fifth(11)
+    print("printEveryFifth(20) does:")
+    print_every_fifth(20)
+    print("printEveryFifth(3) does:")
+    print_every_fifth(3)
+
+    print_seperator_line()
     print("Sample call to squareUserNums:")
     square_user_nums()
+
+    print_seperator_line()
+    print("Sample call to squareUserNums2")
+    square_user_nums2()
 
     print_seperator_line()
     print("Sample calls to sumToN:")
@@ -128,6 +143,10 @@ if __name__ == '__main__':
     print(sum_to_n(3))
     print("sumToN(100) does:")
     print(sum_to_n(100))
+
+    print_seperator_line()
+    print("Sample call to addUserNums")
+    add_user_nums()
 
     print_seperator_line()
     print("Sample calls to nextWord:")
