@@ -55,7 +55,7 @@ def graph_sin_theta_transformation(color,domain_start,domain_end,center_x,center
     setup_turtle(color,2,center_x,center_y)
 
     true_rotation = petals * math.radians(rotation)
-    for a in range(domain_start,domain_end):
+    for a in range(domain_start,domain_end+1):
         theta = math.radians(a)
         r = size * math.sin(petals*theta - true_rotation)
         x = r * math.cos(theta) + center_x
@@ -81,7 +81,7 @@ def graph_cos_theta_transformation(color,domain_start,domain_end,center_x,center
     setup_turtle(color,2,center_x,center_y)
 
     true_rotation = petals * math.radians(rotation)
-    for a in range(domain_start,domain_end):
+    for a in range(domain_start,domain_end+1):
         theta = math.radians(a)
         r = size * math.cos(petals*theta - true_rotation)
         x = r * math.cos(theta) + center_x
@@ -103,7 +103,7 @@ def graph_sin_theta_degree(color,start_x,start_y,size,degree):
     :return: None"""
     setup_turtle(color,2,start_x,start_y)
 
-    for a in range(180):
+    for a in range(181):
         theta=math.radians(a)
         r = size * math.sin(theta) ** degree
         x = r * math.cos(theta) + start_x
@@ -135,14 +135,20 @@ t.speed(0)
 
 """Every call of cosThetaTransformations can also be represented with sinThetaTransformations"""
 
-for x in range(-250,251,50):
-    for y in range(-250,251,50):
-        print(x,y)
-
 #
 # draw_axes(100,-150,0)
 # draw_axes(100,150,0)
 # graph_sin_theta_transformation('red',0,180,-150,0,75,3,0)
 # # graph_cos_theta_transformation('blue',0,180,150,0,75,3,-90)
 # graph_sin_theta_degree('blue',150,0,75,3)
+
+draw_axes(100,-200,200)
+draw_axes(100,-200,-200)
+draw_axes(100,200,200)
+draw_axes(100,200,-200)
+
+graph_sin_theta_degree('blue',-200,200,80,3)
+graph_sin_theta_degree('red',-200,-200,80,7)
+graph_sin_theta_degree('green',200,200,80,0.5)
+graph_sin_theta_degree('yellow',200,-200,80,0.25)
 win.exitonclick()
