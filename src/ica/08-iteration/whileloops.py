@@ -48,6 +48,21 @@ def square_user_nums():
         user_num = int(user_inp)
 
 
+def square_user_nums2():
+    """
+    Reads in numbers from the user, stopping when the user enters a negative
+    number. For each user number, it prints the number and the square of
+    the number.
+    """
+    while True:
+        user_inp = input("Enter the next number (negative to quit): ")
+        user_num = int(user_inp)
+        if user_num <0:
+            break
+        print(user_num, "squared is", user_num ** 2)
+
+
+
 def sum_to_n(top_num):
     """
     Takes in a number and computes and returns the sum of the numbers
