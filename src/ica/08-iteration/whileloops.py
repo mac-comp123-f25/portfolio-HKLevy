@@ -62,7 +62,6 @@ def square_user_nums2():
         print(user_num, "squared is", user_num ** 2)
 
 
-
 def sum_to_n(top_num):
     """
     Takes in a number and computes and returns the sum of the numbers
@@ -72,9 +71,8 @@ def sum_to_n(top_num):
     total = 0    # accumulator variable
     while curr_val <= top_num:
         total = total + curr_val
-        curr_val = curr_val + 3
+        curr_val = curr_val + 1 #Logical error - used to be 3, not 1.
         print(total,curr_val)
-
     return total
 
 
@@ -101,6 +99,7 @@ def print_seperator_line():
     print()
     print("------------------------------")
 
+
 def add_user_nums():
     sum_of_nums = 0
     mynum = input("Enter a number: ")
@@ -109,6 +108,7 @@ def add_user_nums():
         sum_of_nums = sum_of_nums + myint
         mynum = input("Enter a number: ")
         myint = int(mynum)
+
 
 if __name__ == '__main__':
     print_seperator_line()
