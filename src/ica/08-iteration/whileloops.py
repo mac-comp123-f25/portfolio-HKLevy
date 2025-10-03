@@ -18,16 +18,32 @@ def print_every_other(x):
     print("Done!")
 
 
+def print_every_fifth(x):
+    """
+    Prints every fifth value from a given number down to zero
+    """
+    while x >= 0:      # x is the loop variable
+        print(x)
+        x = x - 5
+
+    # when indentation stops, while loop is over
+    print("Done!")
+
+
 def square_user_nums():
     """
     Reads in numbers from the user, stopping when the user enters a negative
     number. For each user number, it prints the number and the square of
     the number.
     """
+
+    # if this pair is commented out, user_num is not defined
     user_inp = input("Enter the next number (negative to quit): ")
     user_num = int(user_inp)
     while user_num >= 0:
         print(user_num, "squared is", user_num ** 2)
+
+        # if this pair is commented out, we are stuck in an infinite loop.
         user_inp = input("Enter the next number (negative to quit): ")
         user_num = int(user_inp)
 
@@ -42,6 +58,7 @@ def sum_to_n(top_num):
     while curr_val <= top_num:
         total = total + curr_val
         curr_val = curr_val + 3
+        print(total,curr_val)
 
     return total
 
@@ -69,6 +86,14 @@ def print_seperator_line():
     print()
     print("------------------------------")
 
+def add_user_nums():
+    sum_of_nums = 0
+    mynum = input("Enter a number: ")
+    myint = int(mynum)
+    while myint != 0:
+        sum_of_nums = sum_of_nums + myint
+        mynum = input("Enter a number: ")
+        myint = int(mynum)
 
 if __name__ == '__main__':
     print_seperator_line()
@@ -88,7 +113,7 @@ if __name__ == '__main__':
     print(sum_to_n(3))
     print("sumToN(100) does:")
     print(sum_to_n(100))
-    
+
     print_seperator_line()
     print("Sample calls to nextWord:")
     print("nextWord('Friends, Romans, countrymen') does:")
