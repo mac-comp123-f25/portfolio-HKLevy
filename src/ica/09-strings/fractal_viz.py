@@ -51,6 +51,19 @@ def draw_combination_of_lacks_and_islands_curve(tur, n, angle, step_size):
 
     draw_fractal(tur, l_system, angle, step_size)
 
+def draw_sierpinski_triangle(tur,n,step_size):
+    axiom = 'FXF++FF++FF'
+    rules = {'F':'FF',
+            'X':'++FXF--FXF--FXF++'}
+    l_system = apply_l_system(axiom,rules,n)
+    draw_fractal(tur,l_system,60,step_size)
+
+def draw_peano_gosper(tur,n,angle,step_size):
+    axiom = 'FX'
+    rules = {'X':'X+YF++YF-FX--FXFX-YF+',
+             'Y':'-FX+YFYF++YF+FX--FX-Y'}
+    l_system = apply_l_system(axiom,rules,n)
+    draw_fractal(tur,l_system,angle,step_size)
 
 if __name__ == '__main__':
     scr = turtle.Screen()
@@ -58,14 +71,15 @@ if __name__ == '__main__':
     tur.hideturtle()
     tur.speed(0)
     tur.up()
-    tur.goto(-200,0)
     tur.down()
 
-    draw_koch_curve(tur, 4, 60, 5)
+    # draw_koch_curve(tur, 4, 60, 5)
     # draw_hilbert_curve(tur, 4, 90, 5)
     # draw_quadratic_koch_islad(tur, 3, 90, 5)
     # draw_dragon_curve(tur, 3, 90, 5)
     # draw_combination_of_lacks_and_islands_curve(tur, 2, 90, 5)
+    # draw_sierpinski_triangle(tur,4,5)
+    draw_peano_gosper(tur,4,60,5)
 
     tur.up()
     tur.forward(50)
