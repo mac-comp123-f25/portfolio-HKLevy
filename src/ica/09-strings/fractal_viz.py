@@ -58,6 +58,7 @@ if __name__ == '__main__':
     tur.hideturtle()
     tur.speed(0)
     tur.up()
+    tur.goto(-200,0)
     tur.down()
 
     draw_koch_curve(tur, 4, 60, 5)
