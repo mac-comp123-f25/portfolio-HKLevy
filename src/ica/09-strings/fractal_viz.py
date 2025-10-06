@@ -71,15 +71,16 @@ if __name__ == '__main__':
     tur.hideturtle()
     tur.speed(0)
     tur.up()
+    tur.goto(-300,0)
     tur.down()
 
-    # draw_koch_curve(tur, 4, 60, 5)
+    draw_koch_curve(tur, 4, 30, 3) #angle = 60 is standard
     # draw_hilbert_curve(tur, 4, 90, 5)
     # draw_quadratic_koch_islad(tur, 3, 90, 5)
     # draw_dragon_curve(tur, 3, 90, 5)
     # draw_combination_of_lacks_and_islands_curve(tur, 2, 90, 5)
     # draw_sierpinski_triangle(tur,4,5)
-    draw_peano_gosper(tur,4,60,5)
+    # draw_peano_gosper(tur,4,60,5)
 
     tur.up()
     tur.forward(50)
