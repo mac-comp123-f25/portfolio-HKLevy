@@ -32,3 +32,6 @@
 
 ## Strings
 ![1003-strings.jpg](1003-strings.jpg)
+
+## Lists
+![1006-lists.jpg](1006-lists.jpg) 
