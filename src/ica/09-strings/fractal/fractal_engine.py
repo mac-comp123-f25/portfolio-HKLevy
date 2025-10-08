@@ -16,6 +16,8 @@ def draw_fractal(tur: turtle.Turtle, l_system: str, angle: float, step_size: flo
     assert type(angle) in [int, float]
     assert type(step_size) in [int, float]
 
+    states = []
+
     for c in l_system:
         if c == 'F':
             tur.forward(step_size)
@@ -29,3 +31,13 @@ def draw_fractal(tur: turtle.Turtle, l_system: str, angle: float, step_size: flo
             tur.left(angle)
         elif c == '|':
             tur.left(180)
+        elif c == '[':
+            position = tur.pos()
+            direction = tur.heading()
+            states.append((position,direction))
+        elif c == ']':
+            last_index = len(states)-1
+            position = states[last_index][0]
+            direction = states[last_index][1]
+            tur.setposition(position)
+            tur.seth(direction)
