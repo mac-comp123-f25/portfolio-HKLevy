@@ -11,5 +11,7 @@ def sum_positive(my_list):
         if item > 0:
             sum = sum + item
     return sum
+
+
 print(every_other([1,2,3,4,5,6,7,8,9]))
 print(sum_positive([1,2,3,4,5,6,7,8,9]))
