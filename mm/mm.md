@@ -35,3 +35,6 @@
 
 ## Lists
 ![1006-lists.jpg](1006-lists.jpg) 
+
+## Dictionaries
+![1010-dictionaries.jpg](1010-dictionaries.jpg)

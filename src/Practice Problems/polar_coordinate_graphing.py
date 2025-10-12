@@ -1,5 +1,5 @@
 """
-Graphs some functions with transformations on a polar graph.
+Graphs some functions with some transformations on a polar graph.
 Polar graphs use r (distance from the origin) and theta
 (counter-clockwise angle of rotation from facing east, given in radians)
 rather than x (horizontal distance) and y (vertical distance)
@@ -41,7 +41,7 @@ def setup_turtle(color,width,start_x,start_y):
     t.width(width)
 
 def graph_sin_theta_transformation(color,domain_start,domain_end,center_x,center_y,size,petals,rotation):
-    """Graphs the function r = size * sin(petals*theta - rotation).
+    """Graphs the function r = size * sin(petals*theta - rotation) for domain_start ≤ theta ≤ domain_end
     :param color: The color of the graph's curve
     :param domain_start: The starting value for the domain, given in degrees
     :param domain_end: The ending value for the domain, given in degrees
@@ -151,4 +151,5 @@ graph_sin_theta_degree('blue',-200,200,80,3)
 graph_sin_theta_degree('red',-200,-200,80,7)
 graph_sin_theta_degree('green',200,200,80,0.5)
 graph_sin_theta_degree('yellow',200,-200,80,0.25)
+
 win.exitonclick()
