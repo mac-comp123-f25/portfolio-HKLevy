@@ -10,23 +10,6 @@ import turtle
 import math
 
 
-def draw_axes(length,origin_x,origin_y):
-    """Draws the main axes of the polar graph given by
-    theta = 0, theta = π/2, theta = π, and theta = 3π/2.
-    :param length: the length of the axes
-    origin_x: the x coordinate of the origin
-    origin_y: the y coordinate of the origin
-    :return: None"""
-    t.color('black')
-    t.width(5)
-    t.up()
-    t.goto(origin_x,origin_y)
-    t.down()
-    for x in range(4):
-        t.fd(length)
-        t.bk(length)
-        t.lt(90)
-
 def setup_turtle(color,width,start_x,start_y):
     """Sets up the turtle object for what will be graphed.
     :param color: the color of the turtle
@@ -39,6 +22,30 @@ def setup_turtle(color,width,start_x,start_y):
     t.down()
     t.color(color)
     t.width(width)
+
+def draw_axes(length,origin_x,origin_y):
+    """Draws the main axes of the polar graph given by
+    theta = 0, theta = π/2, theta = π, and theta = 3π/2.
+    :param length: the length of the axes
+    origin_x: the x coordinate of the origin
+    origin_y: the y coordinate of the origin
+    :return: None"""
+    setup_turtle('black',5,origin_x,origin_y)
+    for x in range(4):
+        t.fd(length)
+        t.bk(length)
+        t.lt(90)
+
+def draw_graph(theta,r,center_x,center_y,rep):
+    """Graphs the point (theta, r)."""
+    x = r * math.cos(theta) + center_x
+    y = r * math.sin(theta) + center_y
+    if rep==0:
+        t.up()
+        t.goto(x,y)
+        t.down()
+    else:
+        t.goto(x,y)
 
 def graph_sin_theta_transformation(color,domain_start,domain_end,center_x,center_y,size,petals,rotation):
     """Graphs the function r = size * sin(petals*theta - rotation) for domain_start ≤ theta ≤ domain_end
@@ -58,14 +65,7 @@ def graph_sin_theta_transformation(color,domain_start,domain_end,center_x,center
     for a in range(domain_start,domain_end+1):
         theta = math.radians(a)
         r = size * math.sin(petals*theta - true_rotation)
-        x = r * math.cos(theta) + center_x
-        y = r * math.sin(theta) + center_y
-        if a==0:
-            t.up()
-            t.goto(x,y)
-            t.down()
-        else:
-            t.goto(x,y)
+        draw_graph(theta,r,center_x,center_y,a)
 
 def graph_cos_theta_transformation(color,domain_start,domain_end,center_x,center_y,size,petals,rotation):
     """Graphs the function r = size * cos(n*theta).
@@ -84,14 +84,7 @@ def graph_cos_theta_transformation(color,domain_start,domain_end,center_x,center
     for a in range(domain_start,domain_end+1):
         theta = math.radians(a)
         r = size * math.cos(petals*theta - true_rotation)
-        x = r * math.cos(theta) + center_x
-        y = r * math.sin(theta) + center_y
-        if a==0:
-            t.up()
-            t.goto(x,y)
-            t.down()
-        else:
-            t.goto(x,y)
+        draw_graph(theta,r,center_x,center_y,a)
 
 def graph_sin_theta_degree(color,start_x,start_y,size,degree):
     """Graphs the function r = size * sin(theta) ** degree.
@@ -106,50 +99,62 @@ def graph_sin_theta_degree(color,start_x,start_y,size,degree):
     for a in range(181):
         theta=math.radians(a)
         r = size * math.sin(theta) ** degree
-        x = r * math.cos(theta) + start_x
-        y = r * math.sin(theta) + start_y
-        if a==0:
-            t.up()
-            t.goto(x,y)
-            t.down()
-        else:
-            t.goto(x,y)
+        draw_graph(theta,r,start_x,start_y,a)
+
+def graph_description(caption,center_x,center_y):
+    setup_turtle('black',2,center_x,center_y)
+    t.write(caption,align='center',font=('Arial',18,'normal'))
+
 #sets up the turtle and screen
 win = turtle.Screen()
+win.screensize(800,550)
 t = turtle.Turtle()
 t.speed(0)
 
-# draw_axes(275,0,0)
-# graph_sin_theta_transformation('red',0,180,0,0,100,3,0)
-# graph_sin_theta_transformation('blue',0,180,0,0,100,3,40)
-# graph_sin_theta_transformation('green',0,180,0,0,100,3,80)
+t.ht()
 
-# graph_cos_theta_transformation('purple',0,360,0,0,50,2,0)
-# graph_cos_theta_transformation('green',0,360,0,0,50,2,30)
-# graph_cos_theta_transformation('red',0,360,0,0,50,2,60)
+#draws 10 sets of axes
+for a in range(10):
+    if a%2==0:
+        y = 150
+    else:
+        y = -150
+    x = 250*(a%5) - 500
+    draw_axes(100,x,y)
 
-# graph_sin_theta_transformation('red',0,180,0,0,100,5,0)
-# """The two calls below accomplish the same thing"""
-# graph_sin_theta_transformation('blue',0,180,0,0,-100,5,0)
-# graph_sin_theta_transformation('green',0,180,0,0,100,5,180)
+#draws and labels 10 graphs
+graph_sin_theta_transformation('red',0,180,-500,150,75,1,0)
+graph_description("r = sin(θ)",-500,25)
 
-"""Every call of cosThetaTransformations can also be represented with sinThetaTransformations"""
+graph_cos_theta_transformation('red',0,180,-500,-150,75,1,0)
+graph_description("r = cos(θ)",-500,-275)
 
-#
-# draw_axes(100,-150,0)
-# draw_axes(100,150,0)
-# graph_sin_theta_transformation('red',0,180,-150,0,75,3,0)
-# # graph_cos_theta_transformation('blue',0,180,150,0,75,3,-90)
-# graph_sin_theta_degree('blue',150,0,75,3)
+graph_sin_theta_transformation('blue',0,180,-250,150,75,3,0)
+graph_description("r = sin(3θ)",-250,25)
 
-draw_axes(100,-200,200)
-draw_axes(100,-200,-200)
-draw_axes(100,200,200)
-draw_axes(100,200,-200)
+graph_cos_theta_transformation('blue',0,180,-250,-150,75,3,0)
+graph_description("r = cos(3θ)",-250,-275)
 
-graph_sin_theta_degree('blue',-200,200,80,3)
-graph_sin_theta_degree('red',-200,-200,80,7)
-graph_sin_theta_degree('green',200,200,80,0.5)
-graph_sin_theta_degree('yellow',200,-200,80,0.25)
+graph_sin_theta_transformation('blue',0,180,0,150,75,3,90)
+graph_description("r = sin(3θ)",0,25)
+graph_description("Rotated 90º",0,0)
+
+graph_cos_theta_transformation('blue',0,180,0,-150,75,3,90)
+graph_description("r = cos(3θ)",0,-275)
+graph_description("Rotated 90º",0,-300)
+
+graph_sin_theta_transformation('green',0,180,250,150,75,5,0)
+graph_description("r = sin(5θ)",250,25)
+
+graph_cos_theta_transformation('green',0,180,250,-150,75,5,0)
+graph_description("r = cos(5θ)",250,-275)
+
+graph_sin_theta_transformation('green',0,36,500,150,75,5,0)
+graph_description("r = sin(5θ)",500,25)
+graph_description("0º ≤ θ ≤ 36º",500,0)
+
+graph_cos_theta_transformation('green',18,126,500,-150,75,5,0)
+graph_description("r = cos(5θ)",500,-275)
+graph_description("18º ≤ θ ≤ 126º",500,-300)
 
 win.exitonclick()
