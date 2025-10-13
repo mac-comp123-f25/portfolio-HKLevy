@@ -34,9 +34,9 @@ print(address_book)
 
 def filter_by_city(city_name,address_book):
     newlist=[]
-    for address in address_book:
-        if address['City'] == city_name:
-            newlist.append(address)
+    for info in address_book:
+        if info['City'] == city_name:
+            newlist.append(info)
     return newlist
 
 print(filter_by_city('Saint Paul',address_book))
