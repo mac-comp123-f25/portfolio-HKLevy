@@ -1,6 +1,6 @@
-def any_shading(start_color, end_color, steps):
+def shading(start_color, end_color, steps):
     """Returns a list of colors in #rrggbb form. They progress from
-    start_color to end_color in however many steps."""
+    start_color to end_color in the given number of steps."""
 
     hexes = [start_color[1:3], end_color[1:3], start_color[3:5], end_color[3:5], start_color[5:7], end_color[5:7]]
 
@@ -55,7 +55,7 @@ t = turtle.Turtle()
 t.speed(0)
 
 """Draws a line that changes color."""
-mycolors=any_shading('#fae3f2','#fa009e',100)
+mycolors=shading('#fae3f2','#fa009e',100)
 t.ht()
 t.up()
 t.goto(-300,0)
@@ -70,8 +70,8 @@ t.color(mycolors[len(mycolors)-1])
 t.dot(15)
 
 """Draws a circle that changes color."""
-colors1=any_shading('#00edfa','#fa009e',90)
-colors2=any_shading('#fa009e','#00edfa',90)
+colors1=shading('#00edfa','#fa009e',90)
+colors2=shading('#fa009e','#00edfa',90)
 t.up()
 t.goto(0,-200)
 t.width(5)
