@@ -65,7 +65,10 @@ def graph_sin_theta_transformation(t,color,domain_start,domain_end,center_x,cent
     for a in range(domain_start+rotation,domain_end+rotation+1):
         theta = math.radians(a)
         r = size * math.sin(petals*theta - true_rotation)
-        draw_graph(t,theta,r,center_x,center_y,a)
+        if a==domain_start+rotation:
+            draw_graph(t, theta, r, center_x, center_y, 0)
+        else:
+            draw_graph(t,theta,r,center_x,center_y,1)
 
 def graph_cos_theta_transformation(t,color,domain_start,domain_end,center_x,center_y,size,petals,rotation):
     """Graphs the function r = size * cos(n*theta).
@@ -84,7 +87,10 @@ def graph_cos_theta_transformation(t,color,domain_start,domain_end,center_x,cent
     for a in range(domain_start+rotation,domain_end+rotation+1):
         theta = math.radians(a)
         r = size * math.cos(petals*theta - true_rotation)
-        draw_graph(t,theta,r,center_x,center_y,a)
+        if a==domain_start+rotation:
+            draw_graph(t, theta, r, center_x, center_y, 0)
+        else:
+            draw_graph(t,theta,r,center_x,center_y,1)
 
 def graph_sin_theta_degree(t,color,start_x,start_y,size,degree):
     """Graphs the function r = size * sin(theta) ** degree.

@@ -45,9 +45,11 @@ if __name__ == '__main__':
     """
 
     """Take user input in terms of number of layers and color and size."""
-    layers = 3 #will become user inputted later.
-    start_size = 75
-    inc_size = 50
+    layers = 5 #will become user inputted later.
+    start_size = 50
+    inc_size = 30
+    small_dot = inc_size/3
+    large_dot = start_size/3
     for x in range(layers):
         petal_size = start_size + x * inc_size
         graph_sin_theta_transformation(turt,'black',0,180,0,0,petal_size,3,30)
@@ -55,10 +57,39 @@ if __name__ == '__main__':
         turt.up()
         for y in range(6):
             turt.fd(petal_size)
-            turt.dot(15)
+            turt.dot(small_dot)
             turt.bk(petal_size)
             turt.rt(60)
         turt.down()
-    turt.dot(35)
+    turt.dot(large_dot)
 
+    #first, for the outsides
+    turt.rt(15)
+    petal_size = start_size + inc_size*layers
+    for x in range(12):
+        angle = 15+30*x
+        if x%2==0:
+            graph_sin_theta_transformation(turt,'black',18,36,0,0,petal_size,5,angle-18)
+        else:
+            graph_sin_theta_transformation(turt,'black',0,18,0,0,petal_size,5,angle-18)
+        turt.up()
+        turt.goto(0,0)
+        turt.lt(30)
+        turt.fd(petal_size)
+        turt.dot(small_dot) #small dot for now
+        turt.bk(petal_size)
+        turt.down()
+
+    #now for the insides. still need to figure out how to place the dots
+    turt.lt(30)
+    petal_size = start_size + inc_size*(layers+4)
+    for x in range(12):
+        angle = 15+30*x
+        if x%2==0:
+            graph_sin_theta_transformation(turt,'black',25,36,0,0,260,5,angle-18)
+        else:
+            graph_sin_theta_transformation(turt,'black',0,11,0,0,260,5,angle-18)
     win.exitonclick()
+
+
+    """Still experimenting with petal sizes for inside and outside poofs"""
