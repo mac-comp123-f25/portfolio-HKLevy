@@ -12,7 +12,7 @@ if __name__ == '__main__':
     This is starting off by looking very nice. Just maybe not what I want, but I also don't want to delete it.
     I found an inspiration picture that I think I can mimic/adapt.
     This will challenge me more in terms of creativity and coding.
-    
+    """
     graph_sin_theta_transformation(turt,'black',0,180,0,0,50,3,0)
     graph_sin_theta_transformation(turt,'black',0,180,0,0,50,3,180)
     turt.up()
@@ -42,9 +42,26 @@ if __name__ == '__main__':
     turt.seth(0)
     turt.down()
     turt.circle(50+2*new_radius)
-    """
 
-    """Take user input in terms of number of layers and color and size."""
+    turt.up()
+    turt.goto(0,-1*(50+2*new_radius+15))
+    turt.down()
+    turt.circle(50+2*new_radius+15)
+    for x in range(60):
+        turt.lt(90)
+        turt.fd(15)
+        turt.bk(15)
+        turt.rt(90)
+        turt.circle(50+2*new_radius+15,extent=6)
+
+    mini_radius = (50+2*new_radius+15)/math.sqrt(3)
+    for x in range(6):
+        turt.rt(90)
+        turt.circle(mini_radius,extent=240)
+        turt.rt(90)
+
+
+    """Take user input in terms of number of layers and color and size.
     layers = 5 #will become user inputted later.
     start_size = 50
     inc_size = 30
@@ -89,7 +106,8 @@ if __name__ == '__main__':
             graph_sin_theta_transformation(turt,'black',25,36,0,0,260,5,angle-18)
         else:
             graph_sin_theta_transformation(turt,'black',0,11,0,0,260,5,angle-18)
+            
+    Still experimenting with petal sizes for inside and outside poofs"""
     win.exitonclick()
 
 
-    """Still experimenting with petal sizes for inside and outside poofs"""
