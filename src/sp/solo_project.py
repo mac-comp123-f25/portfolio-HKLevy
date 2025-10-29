@@ -47,18 +47,33 @@ if __name__ == '__main__':
     turt.goto(0,-1*(50+2*new_radius+15))
     turt.down()
     turt.circle(50+2*new_radius+15)
-    for x in range(60):
-        turt.lt(90)
-        turt.fd(15)
-        turt.bk(15)
-        turt.rt(90)
-        turt.circle(50+2*new_radius+15,extent=6)
+    # for x in range(60):
+    #     turt.lt(90)
+    #     turt.fd(15)
+    #     turt.bk(15)
+    #     turt.rt(90)
+    #     turt.circle(50+2*new_radius+15,extent=6)
 
     mini_radius = (50+2*new_radius+15)/math.sqrt(3)
     for x in range(6):
         turt.rt(90)
         turt.circle(mini_radius,extent=240)
         turt.rt(90)
+
+    for x in range(6):
+        big_angle=60*x
+        turt.up()
+        turt.goto(0,0)
+        turt.seth(0)
+        turt.lt(big_angle)
+        turt.fd(50+2*new_radius+15+mini_radius) #this is wrong. radii overlap. need ipad to be precise drawing.
+        center=turt.pos()
+
+        turt.down()
+        for y in range(6):
+            small_angle = -10 + 40 * y
+            graph_sin_theta_transformation(turt,'black',0,60,center[0],center[1],mini_radius,3,big_angle+small_angle-120)
+
 
 
     """Take user input in terms of number of layers and color and size.
