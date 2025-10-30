@@ -104,6 +104,14 @@ def daylight_hours(rise_hour, rise_min, set_hour, set_min):
     hour_diff = minute_diff / 60
     return hour_diff
 
+def average_daylight_time (table):
+    total_hours = 0
+    for row in table:
+        day_hours= daylight_hours(int(row['SunRiseHour']),int(row ['SunRiseMin']), int(row['SunSetHour']), int(row['SunSetMin']))
+        total_hours += day_hours
+    total_hours /= len(table)
+    return total_hours
+
 
 def main():
     # print(lookup_phone('Fox, Susan', directory))
@@ -135,6 +143,8 @@ def main():
     print("Sunsets before 6pm =", count_sunsets_before(18, sun_table))
     print("Sunsets before 10pm =", count_sunsets_before(22, sun_table))
     print("Sunsets before 4pm =", count_sunsets_before(16, sun_table))
+
+    print(average_daylight_time(sun_table))
 
 
 if __name__ == '__main__':
