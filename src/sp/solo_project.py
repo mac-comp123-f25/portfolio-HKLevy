@@ -13,8 +13,9 @@ if __name__ == '__main__':
     I found an inspiration picture that I think I can mimic/adapt.
     This will challenge me more in terms of creativity and coding.
     """
-    graph_sin_theta_transformation(turt,'black',0,180,0,0,50,3,0)
-    graph_sin_theta_transformation(turt,'black',0,180,0,0,50,3,180)
+    radius1 = 50
+    graph_sin_theta_transformation(turt,'black',0,180,0,0,radius1,3,0)
+    graph_sin_theta_transformation(turt,'black',0,180,0,0,radius1,3,180)
     turt.up()
     lstpts=[]
     turt.goto(0,-50)
@@ -28,51 +29,75 @@ if __name__ == '__main__':
         turt.down()
         turt.goto(0,0)
     turt.up()
-    turt.goto(0,-50)
+    turt.goto(0,-1*radius1)
     turt.rt(180)
     turt.down()
-    new_radius = 50*math.sin(math.radians(15))/(1-math.sin(math.radians(15)))
+    small_circ_radius = radius1*math.sin(math.radians(15))/(1-math.sin(math.radians(15)))
     for x in range(12):
-        turt.circle(new_radius)
+        turt.circle(small_circ_radius)
         turt.rt(180)
         turt.circle(50,extent=30)
         turt.rt(180)
+    radius2 = radius1+2*small_circ_radius
     turt.up()
-    turt.goto(0,-1*(50+2*new_radius))
+    turt.goto(0,-1*(radius2))
     turt.seth(0)
     turt.down()
-    turt.circle(50+2*new_radius)
+    turt.circle(radius2)
 
+    radius3 = radius2+15
     turt.up()
-    turt.goto(0,-1*(50+2*new_radius+15))
+    turt.goto(0,-1*(radius3))
     turt.down()
-    turt.circle(50+2*new_radius+15)
-    # for x in range(60):
-    #     turt.lt(90)
-    #     turt.fd(15)
-    #     turt.bk(15)
-    #     turt.rt(90)
-    #     turt.circle(50+2*new_radius+15,extent=6)
+    turt.circle(radius3)
 
-    mini_radius = (50+2*new_radius+15)/math.sqrt(3)
+    # turt.up()
+    # turt.goto(0,-0)
+    # turt.seth(0)
+    # turt.rt(30)
+    # turt.down()
+    # turt.pensize(2)
+    # turt.color('red')
+    # turt.fd(100)
+    # turt.lt(90)
+    # turt.circle(100,extent=240)
+    # turt.lt(90)
+    # turt.fd(100)
+    # for y in range(6):
+    #     small_angle = -10 + 40 * y
+    #     graph_sin_theta_transformation(turt,'red',0,60,0,0,100,3,small_angle-30)
+
+
+    for x in range(60):
+        turt.lt(90)
+        turt.fd(15)
+        turt.bk(15)
+        turt.rt(90)
+        turt.circle(radius3,extent=6)
+
+    circ240_radius = (radius3)/math.sqrt(3)
     for x in range(6):
         turt.rt(90)
-        turt.circle(mini_radius,extent=240)
+        turt.circle(circ240_radius,extent=240)
         turt.rt(90)
 
+    circ240_dist = circ240_radius*2
+    """This center for each circle is right. The petals could get a tiny tiny bit more spread out."""
     for x in range(6):
         big_angle=60*x
         turt.up()
         turt.goto(0,0)
         turt.seth(0)
         turt.lt(big_angle)
-        turt.fd(50+2*new_radius+15+mini_radius) #this is wrong. radii overlap. need ipad to be precise drawing.
+        turt.fd(circ240_dist)
         center=turt.pos()
 
         turt.down()
         for y in range(6):
-            small_angle = -10 + 40 * y
-            graph_sin_theta_transformation(turt,'black',0,60,center[0],center[1],mini_radius,3,big_angle+small_angle-120)
+            #small_angle = -10 + 40 * y
+            #small_angle = -13 + 41 * y closer but not tangent
+            small_angle = -16 + 42 * y # i like that a lot :)
+            graph_sin_theta_transformation(turt,'black',0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
 
 
 
