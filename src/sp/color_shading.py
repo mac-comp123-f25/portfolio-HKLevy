@@ -47,40 +47,40 @@ def shading(start_color, end_color, steps):
         color_list.append(hex_code)
     return color_list
 
+if __name__=='__main__':
+    import turtle
 
-import turtle
+    win = turtle.Screen()
+    t = turtle.Turtle()
+    t.speed(0)
 
-win = turtle.Screen()
-t = turtle.Turtle()
-t.speed(0)
+    """Draws a line that changes color."""
+    mycolors=shading('#fae3f2','#fa009e',100)
+    t.ht()
+    t.up()
+    t.goto(-300,0)
+    t.down()
+    t.color(mycolors[0])
+    t.width(8)
+    t.dot(15)
+    for x in mycolors:
+        t.color(x)
+        t.fd(600/len(mycolors))
+    t.color(mycolors[len(mycolors)-1])
+    t.dot(15)
 
-"""Draws a line that changes color."""
-mycolors=shading('#fae3f2','#fa009e',100)
-t.ht()
-t.up()
-t.goto(-300,0)
-t.down()
-t.color(mycolors[0])
-t.width(8)
-t.dot(15)
-for x in mycolors:
-    t.color(x)
-    t.fd(600/len(mycolors))
-t.color(mycolors[len(mycolors)-1])
-t.dot(15)
+    """Draws a circle that changes color."""
+    colors1=shading('#00edfa','#fa009e',90)
+    colors2=shading('#fa009e','#00edfa',90)
+    t.up()
+    t.goto(0,-200)
+    t.width(5)
+    t.down()
+    for x in colors1:
+        t.color(x)
+        t.circle(200,extent=2)
+    for x in colors2:
+        t.color(x)
+        t.circle(200,extent=2)
 
-"""Draws a circle that changes color."""
-colors1=shading('#00edfa','#fa009e',90)
-colors2=shading('#fa009e','#00edfa',90)
-t.up()
-t.goto(0,-200)
-t.width(5)
-t.down()
-for x in colors1:
-    t.color(x)
-    t.circle(200,extent=2)
-for x in colors2:
-    t.color(x)
-    t.circle(200,extent=2)
-
-win.exitonclick()
+    win.exitonclick()

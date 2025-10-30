@@ -6,26 +6,40 @@ turt.ht()
 import math
 
 from polar_coordinate_graphing import graph_sin_theta_transformation
+from color_shading import shading
 
 if __name__ == '__main__':
     """
     This is starting off by looking very nice. Just maybe not what I want, but I also don't want to delete it.
     I found an inspiration picture that I think I can mimic/adapt.
     This will challenge me more in terms of creativity and coding.
+    
+    Starting with a purple color just so I can see it. Will give user option of ROYGBVioletPink, I have start to end chosen already.
+    For now I will try going light in the middle to dark on the outside. Maybe that should be the other way around.
     """
-    radius1 = 50
-    graph_sin_theta_transformation(turt,'black',0,180,0,0,radius1,3,0)
-    graph_sin_theta_transformation(turt,'black',0,180,0,0,radius1,3,180)
+
+    """Will have to do a thing if they give me a letter that dne here"""
+    color_dict={'R':None,'O':None,'Y':None,'G':None,'B':None,'V':shading('#f0c4ff','#bb02fa',10),'P':None}
+    color_list=color_dict['V']
+
+    radius1 = 50 #may respond to user later.
+    turt.color(color_list[0])
+    turt.begin_fill()
+    graph_sin_theta_transformation(turt,color_list[0],0,180,0,0,radius1,3,0)
+    turt.end_fill()
+    turt.begin_fill()
+    graph_sin_theta_transformation(turt,color_list[0],0,180,0,0,radius1,3,180)
+    turt.end_fill()
     turt.up()
-    lstpts=[]
+    lstpts12=[]
     turt.goto(0,-50)
     turt.down()
     for x in range(12):
-        lstpts.append(turt.pos())
+        lstpts12.append(turt.pos())
         turt.circle(50,extent=30)
-    for x in range(1,len(lstpts),2):
+    for x in range(1,len(lstpts12),2):
         turt.up()
-        turt.goto(lstpts[x])
+        turt.goto(lstpts12[x])
         turt.down()
         turt.goto(0,0)
     turt.up()
@@ -33,8 +47,11 @@ if __name__ == '__main__':
     turt.rt(180)
     turt.down()
     small_circ_radius = radius1*math.sin(math.radians(15))/(1-math.sin(math.radians(15)))
+    turt.color(color_list[1])
     for x in range(12):
+        turt.begin_fill()
         turt.circle(small_circ_radius)
+        turt.end_fill()
         turt.rt(180)
         turt.circle(50,extent=30)
         turt.rt(180)
@@ -49,25 +66,7 @@ if __name__ == '__main__':
     turt.up()
     turt.goto(0,-1*(radius3))
     turt.down()
-    turt.circle(radius3)
-
-    # turt.up()
-    # turt.goto(0,-0)
-    # turt.seth(0)
-    # turt.rt(30)
-    # turt.down()
-    # turt.pensize(2)
-    # turt.color('red')
-    # turt.fd(100)
-    # turt.lt(90)
-    # turt.circle(100,extent=240)
-    # turt.lt(90)
-    # turt.fd(100)
-    # for y in range(6):
-    #     small_angle = -10 + 40 * y
-    #     graph_sin_theta_transformation(turt,'red',0,60,0,0,100,3,small_angle-30)
-
-
+    turt.color(color_list[2])
     for x in range(60):
         turt.lt(90)
         turt.fd(15)
@@ -75,14 +74,16 @@ if __name__ == '__main__':
         turt.rt(90)
         turt.circle(radius3,extent=6)
 
+    turt.color(color_list[4]) #intentionally skipping one.
+    turt.pensize(4)
     circ240_radius = (radius3)/math.sqrt(3)
     for x in range(6):
         turt.rt(90)
         turt.circle(circ240_radius,extent=240)
         turt.rt(90)
+    turt.pensize(2)
 
     circ240_dist = circ240_radius*2
-    """This center for each circle is right. The petals could get a tiny tiny bit more spread out."""
     for x in range(6):
         big_angle=60*x
         turt.up()
@@ -96,10 +97,38 @@ if __name__ == '__main__':
         for y in range(6):
             #small_angle = -10 + 40 * y
             #small_angle = -13 + 41 * y closer but not tangent
-            small_angle = -16 + 42 * y # i like that a lot :)
-            graph_sin_theta_transformation(turt,'black',0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
+            small_angle = -16 + 42 * y # i like that a lot :) keeping others for reference.
+            graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
 
+    radius4 = circ240_dist + circ240_radius
+    turt.up()
+    turt.goto(0,-1*radius4)
+    turt.seth(0)
+    turt.down()
+    turt.color(color_list[4]) #intentionally going back to what we had before.
+    turt.circle(radius4,extent=30)
+    for x in range(6):
+        turt.begin_fill()
+        turt.circle(circ240_radius,extent=120)
+        turt.rt(180)
+        turt.circle(circ240_radius,extent=120)
+        turt.circle(radius4,extent=-60)
+        turt.end_fill()
+        turt.circle(radius4,extent=60)
 
+    radius5 = radius4 + 25
+    turt.up()
+    turt.rt(90)
+    turt.fd(25)
+    turt.lt(90)
+    turt.down()
+    turt.color(color_list[5])
+    for x in range(60):
+        turt.circle(radius5,extent=6)
+        turt.lt(90)
+        turt.fd(25)
+        turt.bk(25)
+        turt.rt(90)
 
     """Take user input in terms of number of layers and color and size.
     layers = 5 #will become user inputted later.
