@@ -128,7 +128,7 @@ if __name__ == '__main__':
             #small_angle = -10 + 40 * y
             #small_angle = -13 + 41 * y closer but not tangent
             small_angle = -16 + 42 * y # I like that a lot :) keeping others for reference.
-            graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
+            #graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
 
     #draws a circle around everything we have so far
     radius4 = circ240_dist + circ240_radius
@@ -166,6 +166,15 @@ if __name__ == '__main__':
     turt.pensize(5)
     turt.circle(radius5)
     turt.pensize(2)
+
+    #draws 12 partial circles coming out of what we have so far
+    circ210_radius=radius5*math.tan(math.radians(15))
+    turt.color(color_list[6])
+    for x in range(12):
+        turt.rt(90)
+        turt.circle(circ210_radius,extent=210)
+        turt.rt(90)
+    #now travel along the circle with radius5 and extend the lines up to the top of that partial circle
 
     """Take user input in terms of number of layers and color and size.
     layers = 5 #will become user inputted later.
