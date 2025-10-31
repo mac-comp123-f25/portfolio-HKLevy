@@ -163,6 +163,9 @@ if __name__ == '__main__':
         turt.fd(25)
         turt.bk(25)
         turt.rt(90)
+    turt.pensize(5)
+    turt.circle(radius5)
+    turt.pensize(2)
 
     """Take user input in terms of number of layers and color and size.
     layers = 5 #will become user inputted later.
