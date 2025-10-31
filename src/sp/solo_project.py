@@ -8,6 +8,12 @@ import math
 from polar_coordinate_graphing import graph_sin_theta_transformation
 from color_shading import shading
 
+def line(t,length):
+    t.fd(length)
+    t.bk(length)
+
+#implement line function elsewhere. use it in a separator function that takes inner radius, separator length and num of separations
+
 if __name__ == '__main__':
     """
     This is starting off by looking very nice. Just maybe not what I want, but I also don't want to delete it.
@@ -19,7 +25,7 @@ if __name__ == '__main__':
     """
 
     """Will have to do a thing if they give me a letter that dne here"""
-    color_dict={'R':None,'O':None,'Y':None,'G':None,'B':None,'V':shading('#f0c4ff','#bb02fa',10),'P':None}
+    color_dict={'R':None,'O':None,'Y':None,'G':None,'B':None,'V':shading('#f0c4ff','#bb02fa',7),'P':None}
     color_list=color_dict['V']
 
     radius1 = 50 #may respond to user later.
@@ -114,6 +120,7 @@ if __name__ == '__main__':
 
     #draws 6 petals inside each of the partial circles
     circ240_dist = circ240_radius*2
+    turt.pensize(5)
     for x in range(6):
         big_angle=60*x
         turt.up()
@@ -125,16 +132,12 @@ if __name__ == '__main__':
 
         turt.down()
         #turt.color(color_list[3])
-        turt.pensize(5)
         for y in range(6):
             #small_angle = -10 + 40 * y
             #small_angle = -13 + 41 * y closer but not tangent
             small_angle = -16 + 42 * y # I like that a lot :) keeping others for reference.
-            #turt.begin_fill()
             graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
-            #turt.end_fill()
-            #graph_sin_theta_transformation(turt,'black',0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
-
+    turt.pensize(2)
     #draws a circle around everything we have so far
     radius4 = circ240_dist + circ240_radius
     turt.up()
@@ -154,7 +157,7 @@ if __name__ == '__main__':
         turt.end_fill()
         turt.circle(radius4,extent=60)
 
-    #draws a separator around everything we have so far
+    #draws a separator around everything we have so far.
     radius5 = radius4 + 25
     turt.up()
     turt.rt(90)
@@ -168,18 +171,25 @@ if __name__ == '__main__':
         turt.fd(25)
         turt.bk(25)
         turt.rt(90)
-    turt.pensize(5)
+    turt.pensize(3)
     turt.circle(radius5)
-    turt.pensize(2)
 
-    #draws 12 partial circles coming out of what we have so far
-    circ210_radius=radius5*math.tan(math.radians(15))
+    #draws little firework thingies at the topmost part of each partial circle
     turt.color(color_list[6])
-    for x in range(12):
-        turt.rt(90)
-        turt.circle(circ210_radius,extent=210)
-        turt.rt(90)
-    #now travel along the circle with radius5 and extend the lines up to the top of that partial circle
+    turt.pensize(5)
+    for x in range(60):
+        if x%10==0:
+            turt.rt(90)
+            for y in range(3):
+                line(turt,35-10*y)
+                turt.rt(30)
+            turt.lt(120)
+            for y in range(1,3):
+                line(turt,35-10*y)
+                turt.lt(30)
+        turt.up()
+        turt.circle(radius5, extent=6)
+        turt.down()
 
     """Take user input in terms of number of layers and color and size.
     layers = 5 #will become user inputted later.
