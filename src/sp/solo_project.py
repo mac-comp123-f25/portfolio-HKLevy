@@ -106,13 +106,11 @@ if __name__ == '__main__':
 
     #draws 6 partial circles coming off of the central figure
     turt.color(color_list[4]) #intentionally skipping one.
-    turt.pensize(4)
     circ240_radius = (radius3)/math.sqrt(3)
     for x in range(6):
         turt.rt(90)
         turt.circle(circ240_radius,extent=240)
         turt.rt(90)
-    turt.pensize(2)
 
     #draws 6 petals inside each of the partial circles
     circ240_dist = circ240_radius*2
