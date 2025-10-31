@@ -23,6 +23,8 @@ if __name__ == '__main__':
     color_list=color_dict['V']
 
     radius1 = 50 #may respond to user later.
+
+    #draws the central 6 petals filled in the lightest color
     turt.color(color_list[0])
     turt.begin_fill()
     graph_sin_theta_transformation(turt,color_list[0],0,180,0,0,radius1,3,0)
@@ -30,32 +32,59 @@ if __name__ == '__main__':
     turt.begin_fill()
     graph_sin_theta_transformation(turt,color_list[0],0,180,0,0,radius1,3,180)
     turt.end_fill()
+
+    #draws the circle with radius1
     turt.up()
     lstpts12=[]
-    turt.goto(0,-50)
+    turt.goto(0,-1*radius1)
     turt.down()
     for x in range(12):
         lstpts12.append(turt.pos())
-        turt.circle(50,extent=30)
+        turt.circle(radius1,extent=30)
+
+    #draws the 12 dividing lines through the center
     for x in range(1,len(lstpts12),2):
         turt.up()
         turt.goto(lstpts12[x])
         turt.down()
         turt.goto(0,0)
-    turt.up()
-    turt.goto(0,-1*radius1)
-    turt.rt(180)
-    turt.down()
+
+    #draws the 12 small circles each with radius small_circ_radius and shades around them
     small_circ_radius = radius1*math.sin(math.radians(15))/(1-math.sin(math.radians(15)))
+    radius2 = radius1 + 2 * small_circ_radius
+
+    turt.up()
+    turt.goto(0,-1*radius2)
+    turt.seth(0)
+    turt.down()
     turt.color(color_list[1])
     for x in range(12):
-        turt.begin_fill()
+        #draws the small circle
         turt.circle(small_circ_radius)
+
+        #shades the more outer part
+        turt.begin_fill()
+        turt.circle(radius2,extent=30)
+        turt.circle(small_circ_radius,extent=-105)
+        turt.rt(180)
+        turt.circle(small_circ_radius,extent=-105)
         turt.end_fill()
+
+        #shades the more inner part
+        turt.circle(small_circ_radius,extent=180)
         turt.rt(180)
-        turt.circle(50,extent=30)
-        turt.rt(180)
-    radius2 = radius1+2*small_circ_radius
+        turt.begin_fill()
+        turt.circle(radius1,extent=30)
+        for y in range(2):
+            turt.rt(180)
+            turt.circle(small_circ_radius,extent=75)
+        turt.end_fill()
+        turt.circle(small_circ_radius,extent=180)
+
+        #moves to next circle spot
+        turt.circle(radius2,extent=30)
+
+    #draws a circle of radius2 around the 12 small circles
     turt.up()
     turt.goto(0,-1*(radius2))
     turt.seth(0)
