@@ -105,7 +105,7 @@ if __name__ == '__main__':
         turt.circle(radius3,extent=6)
 
     #draws 6 partial circles coming off of the central figure
-    turt.color(color_list[4]) #intentionally skipping one.
+    turt.color(color_list[4])
     circ240_radius = (radius3)/math.sqrt(3)
     for x in range(6):
         turt.rt(90)
@@ -124,11 +124,16 @@ if __name__ == '__main__':
         center=turt.pos()
 
         turt.down()
+        #turt.color(color_list[3])
+        turt.pensize(5)
         for y in range(6):
             #small_angle = -10 + 40 * y
             #small_angle = -13 + 41 * y closer but not tangent
             small_angle = -16 + 42 * y # I like that a lot :) keeping others for reference.
-            #graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
+            #turt.begin_fill()
+            graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
+            #turt.end_fill()
+            #graph_sin_theta_transformation(turt,'black',0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
 
     #draws a circle around everything we have so far
     radius4 = circ240_dist + circ240_radius
@@ -136,7 +141,7 @@ if __name__ == '__main__':
     turt.goto(0,-1*radius4)
     turt.seth(0)
     turt.down()
-    turt.color(color_list[4]) #intentionally going back to what we had before.
+    turt.color(color_list[4])
     turt.circle(radius4,extent=30)
 
     #shades in the areas around the 6 partial circles that is inside the largest circle
