@@ -38,3 +38,9 @@
 
 ## Dictionaries
 ![1010-dictionaries.jpg](1010-dictionaries.jpg)
+
+## Files
+![1020-files.jpg](1020-files.jpg)
+
+## Classes
+![1029-classes.jpg](1029-classes.jpg)
