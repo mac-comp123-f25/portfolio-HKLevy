@@ -34,10 +34,18 @@ if __name__ == '__main__':
     """
 
     """Will have to do a thing if they give me a letter that dne here"""
-    color_dict={'R':None,'O':None,'Y':None,'G':None,'B':None,'V':shading('#f0c4ff','#bb02fa',6),'P':None}
-    color_list=color_dict['V']
+    color_dict={'R':shading('#ffbdbd','#ff0000',7),
+                'O':shading('#fcd297','#ff9500',7),
+                'Y':shading('#fffaa3','#fff200',7),
+                'G':shading('#b5ffbb','#00ff15',7),
+                'B':shading('#b5eaff','#00b7ff',7),
+                'V':shading('#f0c4ff','#bb02fa',7),
+                'P':shading('#ffc4ed','#ff00b3',7)}
 
-    radius1 = 50 #may respond to user later.
+    #try a light color to a dark color, not necessarily pale to vibrant
+    color_list=color_dict['B']
+
+    radius1 = 30 #may respond to user later.
 
     #draws the central 6 petals filled in the lightest color
     turt.color(color_list[0])
@@ -60,7 +68,7 @@ if __name__ == '__main__':
     turt.seth(0)
     turt.down()
     for x in range(6):
-        line(turt,50)
+        line(turt,radius1)
         turt.lt(60)
 
     #draws the 12 small circles each with radius small_circ_radius and shades around them
@@ -159,6 +167,7 @@ if __name__ == '__main__':
 
     #draws poofs coming out of what we have so far.
     final_dist = math.cos(math.radians(5)) * (radius5 + tiny_radius)
+    turt.color(color_list[7])
     for x in range(6):
         angle = 60 * x
         center = (final_dist*math.cos(math.radians(angle)),final_dist*math.sin(math.radians(angle)))
@@ -167,10 +176,10 @@ if __name__ == '__main__':
         turt.lt(angle+30-18)
         turt.fd(radius3)
         turt.down()
-        graph_sin_theta_transformation(turt,color_list[6],18,36,center[0],center[1],radius3,5,angle-30-18)
+        graph_sin_theta_transformation(turt,color_list[7],18,36,center[0],center[1],radius3,5,angle-30-18)
         turt.seth(angle)
         line(turt,radius3)
-        graph_sin_theta_transformation(turt,color_list[6],0,18,center[0],center[1],radius3,5,angle+30-18)
+        graph_sin_theta_transformation(turt,color_list[7],0,18,center[0],center[1],radius3,5,angle+30-18)
     # radius6 = radius5 + 2 * tiny_radius
     # turt.up()
     # turt.goto(radius6,0)
