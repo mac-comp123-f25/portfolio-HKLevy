@@ -34,9 +34,8 @@ if __name__ == '__main__':
     """
 
     """Will have to do a thing if they give me a letter that dne here"""
-    color_dict={'R':None,'O':None,'Y':None,'G':None,'B':None,'V':shading('#f0c4ff','#bb02fa',8),'P':None}
+    color_dict={'R':None,'O':None,'Y':None,'G':None,'B':None,'V':shading('#f0c4ff','#bb02fa',6),'P':None}
     color_list=color_dict['V']
-    print(color_list)
 
     radius1 = 50 #may respond to user later.
 
@@ -122,7 +121,7 @@ if __name__ == '__main__':
         turt.down()
         for y in range(6):
             small_angle = -16 + 42 * y #gotten through trial and error
-            #graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
+            graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
 
     #shades in the areas around the 6 partial circles that is inside the largest circle
     radius4 = circ240_dist + circ240_radius
@@ -158,6 +157,20 @@ if __name__ == '__main__':
         turt.rt(180)
         turt.circle(radius5,extent=12)
 
+    #draws poofs coming out of what we have so far.
+    final_dist = math.cos(math.radians(5)) * (radius5 + tiny_radius)
+    for x in range(6):
+        angle = 60 * x
+        center = (final_dist*math.cos(math.radians(angle)),final_dist*math.sin(math.radians(angle)))
+        turt.up()
+        turt.goto(center)
+        turt.lt(angle+30-18)
+        turt.fd(radius3)
+        turt.down()
+        graph_sin_theta_transformation(turt,color_list[6],18,36,center[0],center[1],radius3,5,angle-30-18)
+        turt.seth(angle)
+        line(turt,radius3)
+        graph_sin_theta_transformation(turt,color_list[6],0,18,center[0],center[1],radius3,5,angle+30-18)
     # radius6 = radius5 + 2 * tiny_radius
     # turt.up()
     # turt.goto(radius6,0)
