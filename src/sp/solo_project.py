@@ -45,7 +45,7 @@ if __name__ == '__main__':
     #try a light color to a dark color, not necessarily pale to vibrant
     color_list=color_dict['B']
 
-    radius1 = 30 #may respond to user later.
+    radius1 = 50 #may respond to user later.
 
     #draws the central 6 petals filled in the lightest color
     turt.color(color_list[0])
