@@ -34,16 +34,75 @@ if __name__ == '__main__':
     """
 
     """Will have to do a thing if they give me a letter that dne here"""
-    color_dict={'R':shading('#ffbdbd','#ff0000',7),
-                'O':shading('#fcd297','#ff9500',7),
+    color_dict={'R':shading('#ffcfcf','#ff0000',7), #feels better with lighter colors in the middle
+                'O':shading('#ffe8c9','#ff9500',7),
                 'Y':shading('#fffaa3','#fff200',7),
-                'G':shading('#b5ffbb','#00ff15',7),
+                'G':shading('#b3ffb8','#00ff11',7),
                 'B':shading('#b5eaff','#00b7ff',7),
                 'V':shading('#f0c4ff','#bb02fa',7),
-                'P':shading('#ffc4ed','#ff00b3',7)}
+                'P':shading('#ffe8f8','#ff00b3',7)}
 
-    #try a light color to a dark color, not necessarily pale to vibrant
-    color_list=color_dict['B']
+    print(""" –––––Color Options–––––
+    To use one of the pre-made color schemes, enter the corresponding letter.
+    To choose your own color scheme, enter C. You must enter one capital letter.
+    
+    Red:– – – – – – – – R
+    Orange: – – – – – – O
+    Yellow: – – – – – – Y
+    Green:– – – – – – – G
+    Blue: – – – – – – – B
+    Purple: – – – – – – V
+    Pink: – – – – – – – P
+    Choose your own:– – C
+    """)
+    keyword=input("Enter your choice: ")
+    working_options=['R','O','Y','G','B','V','P','C']
+
+    if keyword == 'R':
+        color_list=color_dict['R']
+    elif keyword == 'O':
+        color_list=color_dict['O']
+    elif keyword == 'Y':
+        color_list=color_dict['Y']
+    elif keyword == 'G':
+        color_list=color_dict['G']
+    elif keyword == 'B':
+        color_list=color_dict['B']
+    elif keyword == 'V':
+        color_list=color_dict['V']
+    elif keyword == 'P':
+        color_list=color_dict['P']
+    elif keyword == 'C':
+        print("Enter your colors in the form rrggbb. Do not include # before your entry.")
+        print()
+        acceptable_characters=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
+        condition1=False
+        while condition1==False: #this part isn't working.
+            start_color=input("What color do you want on the inside of the mandala?")
+            pt1=True
+            pt2=True
+            if len(start_color)!=6:
+                pt1=False
+            for x in start_color:
+                if x not in acceptable_characters:
+                    pt2=False
+            if pt1==True and pt2==True:
+                condition1=True
+            else:
+                print("Enter your color again. It must be in the form rrggbb. Do not include a #.")
+
+        condition2=False
+        while condition2==False:
+            end_color=input("What color do you want on the outside of the mandala?")
+            for x in end_color:
+                if x in acceptable_characters and len(end_color)==6:
+                    condition2=True
+                else:
+                    print("Enter your outside color again. It must be in the form rrggbb. Do not include a #.")
+        color1='#'+start_color
+        color2='#'+end_color
+        color_list=shading(color1,color2,7)
+
 
     radius1 = 50 #may respond to user later.
 
@@ -129,7 +188,7 @@ if __name__ == '__main__':
         turt.down()
         for y in range(6):
             small_angle = -16 + 42 * y #gotten through trial and error
-            graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
+            #graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
 
     #shades in the areas around the 6 partial circles that is inside the largest circle
     radius4 = circ240_dist + circ240_radius
