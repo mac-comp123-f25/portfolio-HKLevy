@@ -24,16 +24,6 @@ def separator(t,inside_radius,thickness,num_separators):
         t.circle(inside_radius+thickness,extent=int(360/num_separators))
 
 if __name__ == '__main__':
-    """
-    This is starting off by looking very nice. Just maybe not what I want, but I also don't want to delete it.
-    I found an inspiration picture that I think I can mimic/adapt.
-    This will challenge me more in terms of creativity and coding.
-    
-    Starting with a purple color just so I can see it. Will give user option of ROYGBVioletPink, I have start to end chosen already.
-    For now I will try going light in the middle to dark on the outside. Maybe that should be the other way around.
-    """
-
-    """Will have to do a thing if they give me a letter that dne here"""
     color_dict={'R':shading('#ffcfcf','#ff0000',7), #feels better with lighter colors in the middle
                 'O':shading('#ffe8c9','#ff9500',7),
                 'Y':shading('#fffaa3','#fff200',7),
@@ -76,8 +66,8 @@ if __name__ == '__main__':
         print("Enter your colors in the form rrggbb. Do not include # before your entry.")
         print()
         acceptable_characters=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
-        condition1=False
-        while condition1==False: #this part isn't working.
+        condition=False
+        while condition==False:
             start_color=input("What color do you want on the inside of the mandala?")
             pt1=True
             pt2=True
@@ -87,18 +77,24 @@ if __name__ == '__main__':
                 if x not in acceptable_characters:
                     pt2=False
             if pt1==True and pt2==True:
-                condition1=True
+                condition=True
             else:
                 print("Enter your color again. It must be in the form rrggbb. Do not include a #.")
 
-        condition2=False
-        while condition2==False:
+        condition=False
+        while condition==False:
             end_color=input("What color do you want on the outside of the mandala?")
+            pt1=True
+            pt2=True
+            if len(start_color)!=6:
+                pt1=False
             for x in end_color:
-                if x in acceptable_characters and len(end_color)==6:
-                    condition2=True
-                else:
-                    print("Enter your outside color again. It must be in the form rrggbb. Do not include a #.")
+                if x not in acceptable_characters:
+                    pt2=False
+            if pt1==True and pt2==True:
+                condition=True
+            else:
+                print("Enter your color again. It must be in the form rrggbb. Do not include a #.")
         color1='#'+start_color
         color2='#'+end_color
         color_list=shading(color1,color2,7)
@@ -239,75 +235,6 @@ if __name__ == '__main__':
         turt.seth(angle)
         line(turt,radius3)
         graph_sin_theta_transformation(turt,color_list[7],0,18,center[0],center[1],radius3,5,angle+30-18)
-    # radius6 = radius5 + 2 * tiny_radius
-    # turt.up()
-    # turt.goto(radius6,0)
-    # turt.down()
-    # turt.lt(90)
-    # turt.circle(radius6)
-    # #draws little firework thingies at the topmost part of each partial circle. save for end?
-    # turt.color(color_list[7])
-    # turt.pensize(5)
-    # for x in range(6):
-    #     turt.rt(90)
-    #     for y in range(3):
-    #         line(turt,35-10*y)
-    #         turt.rt(30)
-    #     turt.lt(120)
-    #     for y in range(1,3):
-    #         line(turt,35-10*y)
-    #         turt.lt(30)
-    #     turt.up()
-    #     turt.circle(radius6, extent=60)
-    #     turt.down()
-
-    """Take user input in terms of number of layers and color and size.
-    layers = 5 #will become user inputted later.
-    start_size = 50
-    inc_size = 30
-    small_dot = inc_size/3
-    large_dot = start_size/3
-    for x in range(layers):
-        petal_size = start_size + x * inc_size
-        graph_sin_theta_transformation(turt,'black',0,180,0,0,petal_size,3,30)
-        graph_sin_theta_transformation(turt,'black',0,180,0,0,petal_size,3,90)
-        turt.up()
-        for y in range(6):
-            turt.fd(petal_size)
-            turt.dot(small_dot)
-            turt.bk(petal_size)
-            turt.rt(60)
-        turt.down()
-    turt.dot(large_dot)
-
-    #first, for the outsides
-    turt.rt(15)
-    petal_size = start_size + inc_size*layers
-    for x in range(12):
-        angle = 15+30*x
-        if x%2==0:
-            graph_sin_theta_transformation(turt,'black',18,36,0,0,petal_size,5,angle-18)
-        else:
-            graph_sin_theta_transformation(turt,'black',0,18,0,0,petal_size,5,angle-18)
-        turt.up()
-        turt.goto(0,0)
-        turt.lt(30)
-        turt.fd(petal_size)
-        turt.dot(small_dot) #small dot for now
-        turt.bk(petal_size)
-        turt.down()
-
-    #now for the insides. still need to figure out how to place the dots
-    turt.lt(30)
-    petal_size = start_size + inc_size*(layers+4)
-    for x in range(12):
-        angle = 15+30*x
-        if x%2==0:
-            graph_sin_theta_transformation(turt,'black',25,36,0,0,260,5,angle-18)
-        else:
-            graph_sin_theta_transformation(turt,'black',0,11,0,0,260,5,angle-18)
-            
-    Still experimenting with petal sizes for inside and outside poofs"""
     print("End state: ",turt.pos(),turt.heading())
     win.exitonclick()
 
