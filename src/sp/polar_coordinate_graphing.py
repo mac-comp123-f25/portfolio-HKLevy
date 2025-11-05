@@ -20,7 +20,7 @@ def setup_turtle(t,color,width,start_x,start_y):
     t.up()
     t.goto(start_x,start_y)
     t.down()
-    t.color(color)
+    t.pencolor(color)
     t.width(width)
 
 def draw_axes(t,length,origin_x,origin_y):
