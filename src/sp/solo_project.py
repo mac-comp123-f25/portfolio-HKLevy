@@ -196,7 +196,8 @@ if __name__ == '__main__':
     """This draws a separator around the 2 sections we have so far."""
     turt.color(color_list[2])
     separator(turt,radius2,15,60,False)
-    radius3 = radius2 + 15
+    separator(turt,radius2+15,5,1,True)
+    radius3 = radius2 + 20
 
     """This draws the background for the next section of the mandala."""
     turt.color(color_list[3])
@@ -225,7 +226,7 @@ if __name__ == '__main__':
             graph_sin_theta_transformation(turt,color_list[3],0,60,center[0],center[1],circ240_radius,3,big_angle+small_angle-120)
             turt.end_fill()
 
-    """This draws a circle, then a separator around what we have so far."""
+    """This draws a circle, then a three-layer separator around what we have so far."""
     radius4 = circ240_dist + circ240_radius
     turt.up()
     turt.goto(radius4,0)
@@ -233,8 +234,10 @@ if __name__ == '__main__':
     turt.down()
     turt.color(color_list[4])
     turt.circle(radius4)
-    separator(turt,radius4,18,1,True)
-    radius5 = radius4 + 18
+    separator(turt,radius4,5,1,True)
+    separator(turt,radius4+5,20,90,False)
+    separator(turt,radius4+25,5,1,True)
+    radius5 = radius4 + 30
 
     """This draws the next layer - 30 tangent circles with every 5th one filled in."""
     tiny_radius = radius5*math.sin(math.radians(6))/(1-math.sin(math.radians(6)))
