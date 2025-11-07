@@ -89,7 +89,6 @@ if __name__ == '__main__':
     Purple: – – – – – – V
     Pink: – – – – – – – P
     Choose your own:– – C
-        * Recommended: start with ff82e4, end with db82ff
     """)
     keyword=input("Enter your choice: ")
     while keyword not in color_dict and keyword != 'C':
@@ -100,8 +99,10 @@ if __name__ == '__main__':
     elif keyword == 'C':
         print("Enter your colors in the form rrggbb. Do not include # before your entry.")
         print()
-        start_color=input("What color do you want on the inside of the mandala? ")
         acceptable_characters=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
+
+        #Checks whether the first color is in the right form.
+        start_color=input("What color do you want on the inside of the mandala? ")
         condition=False
         while not condition:
             pt1=True
@@ -115,6 +116,8 @@ if __name__ == '__main__':
                 condition=True
             else:
                 start_color=input("Enter your color again. It must be in the form rrggbb. Do not include a #. ")
+
+        #Checks whether the second color is in the right form.
         print()
         end_color=input("What color do you want on the outside of the mandala? ")
         condition=False
@@ -130,12 +133,14 @@ if __name__ == '__main__':
                 condition=True
             else:
                 end_color=input("Enter your color again. It must be in the form rrggbb. Do not include a #. ")
+
+        #Generates the list of colors for each layer of the mandala
         color1='#'+start_color
         color2='#'+end_color
         color_list=shading(color1,color2,6)
         print("Ok!")
     else:
-        """This block should never be reached, but it exists just in case."""
+        #This block should never be reached, but it exists just in case.
         color_list=shading('#000000','#000000',6)
 
     """This draws the innermost section of the mandala."""
