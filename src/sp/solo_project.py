@@ -97,7 +97,7 @@ if __name__ == '__main__':
         color_list=color_dict[keyword]
         print("Ok!")
     elif keyword == 'C':
-        print("Enter your colors in the form rrggbb. Do not include # before your entry.")
+        print("Enter your colors in the form of a rrggbb hex code with all lowercase letters. Do not include # before your entry.")
         print()
         acceptable_characters=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
 
@@ -115,7 +115,7 @@ if __name__ == '__main__':
             if pt1==True and pt2==True:
                 condition=True
             else:
-                start_color=input("Enter your color again. It must be in the form rrggbb. Do not include a #. ")
+                start_color=input("Enter your color again. It must be in the form of a rrggbb hex code with all lowercase letters. Do not include a #. ")
 
         #Checks whether the second color is in the right form.
         print()
