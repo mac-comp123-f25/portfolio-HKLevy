@@ -5,7 +5,6 @@ This script draws a mandala. The user can choose the colors or color scheme of t
 """
 import turtle
 import math
-import tkinter as tk
 from polar_coordinate_graphing import graph_sin_theta_transformation
 from color_shading import shading
 
@@ -61,6 +60,7 @@ def separator(t,inside_radius,thickness,num_separators,fill_bool):
             line(t,thickness,False)
             t.rt(90)
             t.circle(inside_radius+thickness,extent=int(360/num_separators))
+
 
 if __name__ == '__main__':
     """This sets up the turtle and the screen."""
