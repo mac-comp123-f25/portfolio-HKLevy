@@ -148,54 +148,22 @@ if __name__ == '__main__':
     turt.color(color_list[0])
     turt.begin_fill()
     graph_sin_theta_transformation(turt,color_list[0],0,180,0,0,radius1,3,0)
-    turt.end_fill()
-    turt.begin_fill()
     graph_sin_theta_transformation(turt,color_list[0],0,180,0,0,radius1,3,180)
     turt.end_fill()
-    turt.up()
-    turt.goto(0,-1*radius1)
-    turt.down()
-    turt.circle(radius1)
-    turt.up()
-    turt.goto(0,0)
-    turt.seth(0)
-    turt.down()
     for x in range(6):
         line(turt,radius1,False)
         turt.lt(60)
 
     """This draws the next section of the mandala - 12 tangent circles"""
-    small_circ_radius = radius1*math.sin(math.radians(15))/(1-math.sin(math.radians(15)))
-    radius2 = radius1 + 2 * small_circ_radius
-    turt.up()
-    turt.goto(0,-1*radius2)
-    turt.seth(0)
-    turt.down()
+    small_circ_radius = radius1 * math.sin(math.radians(15)) / (1 - math.sin(math.radians(15)))
+    radius2=radius1+2*small_circ_radius
     turt.color(color_list[1])
+    separator(turt,radius1,small_circ_radius*2,1,True)
+    turt.fillcolor('white')
     for x in range(12):
-        #This draws the small circle
+        turt.begin_fill()
         turt.circle(small_circ_radius)
-
-        #This shades the more outer part
-        turt.begin_fill()
-        turt.circle(radius2,extent=30)
-        turt.circle(small_circ_radius,extent=-105)
-        turt.rt(180)
-        turt.circle(small_circ_radius,extent=-105)
         turt.end_fill()
-
-        #This shades the more inner part
-        turt.circle(small_circ_radius,extent=180)
-        turt.rt(180)
-        turt.begin_fill()
-        turt.circle(radius1,extent=30)
-        for y in range(2):
-            turt.rt(180)
-            turt.circle(small_circ_radius,extent=75)
-        turt.end_fill()
-        turt.circle(small_circ_radius,extent=180)
-
-        #This moves to next circle spot
         turt.circle(radius2,extent=30)
 
     """This draws a separator around the 2 sections we have so far."""
