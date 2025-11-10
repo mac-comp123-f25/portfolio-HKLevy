@@ -62,29 +62,6 @@ def separator(t,inside_radius,thickness,num_separators,fill_bool):
             t.rt(90)
             t.circle(inside_radius+thickness,extent=int(360/num_separators))
 
-class BasicGui:
-    def __init__(self):
-        self.mainWin=tk.Tk()
-        instructions=tk.Label(text="Use the space below to choose your first color. Click DONE when you are done.")
-        instructions.grid(row=0,column=0)
-        red_num=tk.Entry(bg="red",bd=3,relief=tk.FLAT,font="Times 12")
-        red_num.grid(row=1,column=0)
-        green_num=tk.Entry(bg="green",bd=3,relief=tk.FLAT,font="Times 12")
-        green_num.grid(row=2,column=0)
-        blue_num=tk.Entry(bg="blue",bd=3,relief=tk.FLAT,font="Times 12")
-        blue_num.grid(row=3,column=0)
-        done_button=tk.Button(text="DONE")
-        done_button.grid(row=3,column=1)
-        #get the command working for the button
-        #create the rectangle that shows the color we have.
-        #get it so that pressing enter from any Entry will update the color
-
-    def done_command(self):
-
-    def run(self):
-        self.mainWin.mainloop()
-
-
 if __name__ == '__main__':
     """This sets up the turtle and the screen."""
     win = turtle.Screen()
