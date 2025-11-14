@@ -4,11 +4,12 @@ from src.ica.helpers.dummyWindow import *
 def simple_blend(pic1,pic2):
     new_pic=Picture(pic1.getWidth(),pic1.getHeight())
     for (x,y) in pic1:
-        new_pic.show()
         (r1,g1,b1)=pic1.getColor(x,y)
         (r2,g2,b2)=pic2.getColor(x,y)
         (r,g,b)=(r1+r2)/2, (g1+g2)/2, (b1+b2)/2
         new_pic.setColor(x,y,(r,g,b))
+        if y==pic1.getHeight():
+            new_pic.show()
 
     return new_pic
 
