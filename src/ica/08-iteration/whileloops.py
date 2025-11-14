@@ -1,0 +1,158 @@
+"""
+Examples of while and for loops for the Iteration activity
+
+@author: Susan Fox
+@author: Amin Alhashim
+"""
+
+
+def print_every_other(x):
+    """
+    Prints every other value from a given number down to zero
+    """
+    while x >= 0:      # x is the loop variable
+        print(x)
+        x = x - 2
+
+    # when indentation stops, while loop is over
+    print("Done!")
+
+
+def print_every_fifth(x):
+    """
+    Prints every fifth value from a given number down to zero
+    """
+    while x >= 0:      # x is the loop variable
+        print(x)
+        x = x - 5
+
+    # when indentation stops, while loop is over
+    print("Done!")
+
+
+def square_user_nums():
+    """
+    Reads in numbers from the user, stopping when the user enters a negative
+    number. For each user number, it prints the number and the square of
+    the number.
+    """
+
+    # if this pair is commented out, user_num is not defined
+    user_inp = input("Enter the next number (negative to quit): ")
+    user_num = int(user_inp)
+    while user_num >= 0:
+        print(user_num, "squared is", user_num ** 2)
+
+        # if this pair is commented out, we are stuck in an infinite loop.
+        user_inp = input("Enter the next number (negative to quit): ")
+        user_num = int(user_inp)
+
+
+def square_user_nums2():
+    """
+    Reads in numbers from the user, stopping when the user enters a negative
+    number. For each user number, it prints the number and the square of
+    the number.
+    """
+    while True:
+        user_inp = input("Enter the next number (negative to quit): ")
+        user_num = int(user_inp)
+        if user_num <0:
+            break
+        print(user_num, "squared is", user_num ** 2)
+
+
+def sum_to_n(top_num):
+    """
+    Takes in a number and computes and returns the sum of the numbers
+    from zero to the input number.
+    """
+    curr_val = 0  # loop variable
+    total = 0    # accumulator variable
+    while curr_val <= top_num:
+        print(total,curr_val)
+        total = total + curr_val
+        curr_val = curr_val + 1 #Error - used to be 3, not 1.
+    return total
+
+
+def next_word(text):
+    """
+    Takes in a string of text and builds and returns a new string
+    that is the next "word" in the text. In other words, the next sequence
+    of characters up to a space, tab, or newline.
+    """
+    word_str = ""
+    i = 0
+    for ch in text:
+        if ch in " \t\n":
+            break
+        else:
+            word_str = word_str + ch
+    return word_str
+
+
+def print_seperator_line():
+    """
+    Prints a seperator line proceeded by an empty line
+    """
+    print()
+    print("------------------------------")
+
+
+def add_user_nums():
+    """Adds numbers together until 0 is entered."""
+    sum_of_nums = 0
+    mynum = input("Enter a number: ")
+    myint = int(mynum)
+    while myint != 0:
+        sum_of_nums = sum_of_nums + myint
+        mynum = input("Enter a number: ")
+        myint = int(mynum)
+    print(sum_of_nums)
+
+
+if __name__ == '__main__':
+    print_seperator_line()
+    print("Sample calls to printEveryOther:")
+    print("printEveryOther(11) does:")
+    print_every_other(11)
+    print("printEveryOther(4) does:")
+    print_every_other(4)
+
+    print_seperator_line()
+    print("Sample calls to printEveryFifth:")
+    print("printEveryFifth(11) does:")
+    print_every_fifth(11)
+    print("printEveryFifth(20) does:")
+    print_every_fifth(20)
+    print("printEveryFifth(3) does:")
+    print_every_fifth(3)
+
+    print_seperator_line()
+    print("Sample call to squareUserNums:")
+    square_user_nums()
+
+    print_seperator_line()
+    print("Sample call to squareUserNums2")
+    square_user_nums2()
+
+    print_seperator_line()
+    print("Sample calls to sumToN:")
+    print("sumToN(3) does:")
+    print(sum_to_n(3))
+    print("sumToN(100) does:")
+    print(sum_to_n(100))
+
+    print_seperator_line()
+    print("Sample call to addUserNums")
+    add_user_nums()
+
+    print_seperator_line()
+    print("Sample calls to nextWord:")
+    print("nextWord('Friends, Romans, countrymen') does:")
+    print(next_word('Friends, Romans, countrymen'))
+    print("nextWord('Bananas and apples') does:")
+    print(next_word('Bananas and apples'))
+    print("nextWord('Frederick!') does:")
+    print(next_word('Frederick!'))
