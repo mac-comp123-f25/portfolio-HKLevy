@@ -27,8 +27,17 @@ def rotate_right(oldPic):
             new_pic.setColor(newX,newY,(r,g,b))
     return new_pic
 
+def flip_upside_down(oldPic):
+    new_pic=Picture(oldPic.getWidth(),oldPic.getHeight())
+    for (x,y) in oldPic:
+        (r,g,b) = oldPic.getColor(x,y)
+        newX = x
+        newY = oldPic.getHeight()-1-y
+        new_pic.setColor(newX,newY,(r,g,b))
+    return new_pic
+
 p1 = Picture("../SampleImages/arches.jpg")
-p2 = rotate_right(p1)
+p2 = flip_upside_down(p1)
 p2.show()
 
 keep_windows_open()
