@@ -2,7 +2,12 @@ import turtle
 
 
 def spiral_in(spiro_turt, side_len):
-    pass
+    if side_len <= 5:
+        spiro_turt.right(360)
+    else:
+        spiro_turt.forward(side_len)
+        spiro_turt.right(90)
+        spiral_in(spiro_turt,side_len-5)
 
 
 def check_spiral_in(size: int) -> None:
@@ -14,4 +19,4 @@ def check_spiral_in(size: int) -> None:
 
 
 if __name__ == '__main__':
-    check_spiral_in(20)
+    check_spiral_in(200)
