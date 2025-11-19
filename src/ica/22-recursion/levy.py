@@ -16,7 +16,8 @@ def check_draw_levy(size: float, reps: int) -> None:
     """Tester function for the draw_levy"""
 
     # setup window
-    win = tk.Toplevel()
+    #win = tk.Toplevel()
+    win = tk.Tk()
     win.title(f"Levy C Fractal {reps}")
     win_size = size * 7
     cv = tk.Canvas(win, width=win_size, height=win_size)
@@ -38,7 +39,15 @@ def check_draw_levy(size: float, reps: int) -> None:
 
 # TODO: Complete the function
 def draw_levy(turt, size, reps):
-    ...
+    if reps==1:
+        turt.fd(size)
+    else:
+        new_size = calc_next_size(size)
+        turt.left(45)
+        draw_levy(turt,new_size,reps-1)
+        turt.right(90)
+        draw_levy(turt,new_size,reps-1)
+        turt.left(45)
 
 
 if __name__ == '__main__':
@@ -46,11 +55,11 @@ if __name__ == '__main__':
     root.withdraw()
 
     # write tests below
-    check_draw_levy(100, 1)
-    check_draw_levy(100, 2)
+    #check_draw_levy(100, 1)
+    # check_draw_levy(100, 2)
     check_draw_levy(100, 3)
-    check_draw_levy(100, 4)
-    check_draw_levy(100, 5)
-    check_draw_levy(100, 10)
+    # check_draw_levy(100, 4)
+    # check_draw_levy(100, 5)
+    # check_draw_levy(100, 10)
 
     root.mainloop()

@@ -6,7 +6,7 @@ def check_draw_tree(sz):
     """Tester function for the draw_tree"""
 
     # setup window
-    win = tk.Toplevel()
+    win = tk.Tk()
     win.title(f"Tree Fractal {sz}")
     win_size = sz * 7
     cv = tk.Canvas(win, width=win_size, height=win_size)
