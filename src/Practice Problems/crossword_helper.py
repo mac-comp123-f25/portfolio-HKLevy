@@ -14,4 +14,5 @@ def find_words(str):
                 word_list.append(line)
     return word_list
 
-print(find_words('blue**'))
+print(find_words('see****'))
+print(find_words('e**o'))
