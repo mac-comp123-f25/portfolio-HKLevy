@@ -48,6 +48,7 @@ hola
 hiv
 html
 http
+hoa
 icu
 idk
 imo
@@ -83,6 +84,7 @@ seatac
 sec
 siesta
 sfo
+sgt
 ssn
 tbd
 tbh
