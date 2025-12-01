@@ -44,4 +44,12 @@ def find_words(str):
     word_list.sort()
     return word_list
 
-print(find_words('iot**'))
+def find_connectors(top_word, bottom_word):
+    key1='**'+top_word[2]+'***'+bottom_word[2]+'*'
+    key2=top_word[3]+'***'+bottom_word[3]
+    key3=top_word[4]+'***'+bottom_word[4]
+    key4=top_word[5]+'***'+bottom_word[5]
+    print(find_words(key1))
+    print(find_words(key2))
+    print(find_words(key3))
+    print(find_words(key4))

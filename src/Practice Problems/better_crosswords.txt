@@ -40534,8 +40534,6 @@ genotype
 genotypes
 genre
 genres
-genro
-genros
 gens
 genseng
 gensengs
@@ -47732,8 +47730,6 @@ iffy
 ifs
 igloo
 igloos
-iglu
-iglus
 ignatia
 ignatias
 igneous
@@ -99700,7 +99696,6 @@ tardier
 tardies
 tardiest
 tardily
-tardo
 tardy
 tare
 tared
@@ -105041,6 +105036,7 @@ ugly
 ugsome
 uhlan
 uhlans
+uhoh
 uintaite
 uintaites
 uit
