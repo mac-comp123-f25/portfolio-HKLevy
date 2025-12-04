@@ -42,6 +42,12 @@
 ## Files
 ![1020-files.jpg](1020-files.jpg)
 
+## Word Frequency
+![1022-word_freq.jpg](1022-word_freq.jpg)
+
+## CSV
+![1024-csv.jpg](1024-csv.jpg)
+
 ## Classes
 ![1029-classes.jpg](1029-classes.jpg)
 ![1031-classes2.jpg](1031-classes2.jpg)
@@ -49,3 +55,6 @@
 ## Tkinter
 ![1103-tkinter.jpg](1103-tkinter.jpg)
 ![1105-tkinter2.jpg](1105-tkinter2.jpg)
+
+## Recursion
+![1177-recursion.jpg](1177-recursion.jpg)
