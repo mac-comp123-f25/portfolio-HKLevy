@@ -39,6 +39,7 @@ def find_words(str):
     Should consider acronyms and normal words. Add names later?"""
     word_list = find_words_in_file('better_crosswords.txt',str)
     word_list = word_list + find_words_in_file('crossword_acronyms_and_other.txt',str)
+    word_list = word_list + find_words_in_file('crossword_names',str)
 
     word_list.sort()
     return word_list
