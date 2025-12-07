@@ -1,10 +1,12 @@
-def find_words_with(str,big_file):
+import tkinter as tk
+
+def find_words_with(string,big_file):
     """Takes in a string, may include some blank spots represented by *.
     Returns all acceptable answers that have that string in any place inside them."""
     word_file = open(big_file)
     word_list=[]
     for line in word_file:
-        if str in line:
+        if string in line:
             word_list.append(line)
     return word_list
 
@@ -34,12 +36,56 @@ def find_words_in_file(big_file,key):
 
     return word_list
 
-def find_words(str):
+def find_words(string):
     """Accepts *, C,V, or specific lowercase letters.
     Should consider acronyms and normal words. Add names later?"""
-    word_list = find_words_in_file('better_crosswords.txt',str)
-    word_list = word_list + find_words_in_file('crossword_acronyms_and_other.txt',str)
-    word_list = word_list + find_words_in_file('crossword_names',str)
+    word_list = find_words_in_file('better_crosswords.txt',string)
+    word_list = word_list + find_words_in_file('crossword_acronyms_and_other.txt',string)
+    word_list = word_list + find_words_in_file('crossword_names',string)
 
     word_list.sort()
     return word_list
+
+class BasicGui:
+    def __init__(self):
+        self.mainWin = tk.Tk()
+
+        # Instructions
+        self.instruction1 = tk.Label(self.mainWin,text="Enter the pattern that you're looking for.")
+        self.instruction2 = tk.Label(self.mainWin,text="Use * for any letter. Use V or C for vowels or consonants.")
+        self.instruction3 = tk.Label(self.mainWin,text="Use lowercase letters for the actual letter.")
+        self.instruction1.grid(row=0,column=0,columnspan=4,padx=10,pady=5)
+        self.instruction2.grid(row=1,column=0,columnspan=4,padx=10)
+        self.instruction3.grid(row=2,column=0,columnspan=4,padx=10)
+
+        # Entry for the key
+        self.text_box = tk.Entry(self.mainWin,bg='#eeeeee',fg='#000000',bd=5,font='Times 12',justify='center')
+        self.text_box.grid(row=3,column=0,columnspan=2,pady=10)
+        self.text_box.bind("<Return>",self.get_words)
+
+        # Clear button
+        self.clear_button = tk.Button(self.mainWin,bg='#eeeeee',fg='#000000',bd=5,text="Clear Words",command=self.clear_words)
+        self.clear_button.grid(row=3,column=2,columnspan=2,padx=10,pady=10)
+
+    def get_words(self,event):
+        txt=self.text_box.get()
+        word_list=find_words(txt)
+        current_row = 4
+        texts_to_clear = []
+        for x in range(len(word_list)):
+            self.txt = tk.Label(self.mainWin,text=word_list[x])
+            self.txt.grid(row=current_row,column=x%4)
+            texts_to_clear.append(self.txt)
+            if x%4==3:
+                current_row = current_row + 1
+
+    def clear_words(self):
+        num_of_rows = self.mainWin.grid_size()[1]
+        for x in range(4,num_of_rows):
+            self.mainWin.rowconfigure()
+
+    def run(self):
+        self.mainWin.mainloop()
+
+myGui = BasicGui()
+myGui.run()
