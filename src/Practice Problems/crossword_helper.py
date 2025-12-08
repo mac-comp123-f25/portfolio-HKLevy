@@ -49,7 +49,7 @@ def find_words(string):
 class BasicGui:
     def __init__(self):
         self.mainWin = tk.Tk()
-        on_screen_words = []
+        self.on_screen_words = []
 
         # Instructions
         self.instruction1 = tk.Label(self.mainWin,text="Enter the pattern that you're looking for.")
@@ -71,20 +71,20 @@ class BasicGui:
 
     def get_words(self,event):
         if event.keysym == 'Return':
-            texts_to_clear = []
             current_row = 4
             txt=self.text_box.get()
             word_list=find_words(txt)
             for x in range(len(word_list)):
                 self.txt = tk.Label(self.mainWin,text=word_list[x])
                 self.txt.grid(row=current_row,column=x%4)
-                texts_to_clear.append(self.txt)
+                self.on_screen_words.append(self.txt)
                 if x%4==3:
                     current_row = current_row + 1
 
-
     def clear_words(self):
-        pass
+        for thing in self.on_screen_words:
+            thing.destroy()
+        self.on_screen_words=[]
 
     def run(self):
         self.mainWin.mainloop()
