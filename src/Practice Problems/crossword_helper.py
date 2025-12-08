@@ -74,12 +74,17 @@ class BasicGui:
             current_row = 4
             txt=self.text_box.get()
             word_list=find_words(txt)
-            for x in range(len(word_list)):
-                self.txt = tk.Label(self.mainWin,text=word_list[x])
-                self.txt.grid(row=current_row,column=x%4)
-                self.on_screen_words.append(self.txt)
-                if x%4==3:
-                    current_row = current_row + 1
+            if len(word_list)<=64:
+                for x in range(len(word_list)):
+                    self.txt = tk.Label(self.mainWin,text=word_list[x])
+                    self.txt.grid(row=current_row,column=x%4)
+                    self.on_screen_words.append(self.txt)
+                    if x%4==3:
+                        current_row = current_row + 1
+            else:
+                self.warning = tk.Label(self.mainWin,text='There are too many words. Get more specific.')
+                self.warning.grid(row=current_row,column=0,columnspan=4)
+                self.on_screen_words.append(self.warning)
 
     def clear_words(self):
         for thing in self.on_screen_words:
