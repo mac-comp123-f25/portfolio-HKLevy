@@ -49,6 +49,7 @@ def find_words(string):
 class BasicGui:
     def __init__(self):
         self.mainWin = tk.Tk()
+        on_screen_words = []
 
         # Instructions
         self.instruction1 = tk.Label(self.mainWin,text="Enter the pattern that you're looking for.")
@@ -62,27 +63,28 @@ class BasicGui:
         self.text_box = tk.Entry(self.mainWin,bg='#eeeeee',fg='#000000',bd=5,font='Times 12',justify='center')
         self.text_box.grid(row=3,column=0,columnspan=2,pady=10)
         self.text_box.bind("<Return>",self.get_words)
+        self.text_box.bind("<Tab>",self.get_words)
 
         # Clear button
         self.clear_button = tk.Button(self.mainWin,bg='#eeeeee',fg='#000000',bd=5,text="Clear Words",command=self.clear_words)
         self.clear_button.grid(row=3,column=2,columnspan=2,padx=10,pady=10)
 
     def get_words(self,event):
-        txt=self.text_box.get()
-        word_list=find_words(txt)
-        current_row = 4
-        texts_to_clear = []
-        for x in range(len(word_list)):
-            self.txt = tk.Label(self.mainWin,text=word_list[x])
-            self.txt.grid(row=current_row,column=x%4)
-            texts_to_clear.append(self.txt)
-            if x%4==3:
-                current_row = current_row + 1
+        if event.keysym == 'Return':
+            texts_to_clear = []
+            current_row = 4
+            txt=self.text_box.get()
+            word_list=find_words(txt)
+            for x in range(len(word_list)):
+                self.txt = tk.Label(self.mainWin,text=word_list[x])
+                self.txt.grid(row=current_row,column=x%4)
+                texts_to_clear.append(self.txt)
+                if x%4==3:
+                    current_row = current_row + 1
+
 
     def clear_words(self):
-        num_of_rows = self.mainWin.grid_size()[1]
-        for x in range(4,num_of_rows):
-            self.mainWin.rowconfigure()
+        pass
 
     def run(self):
         self.mainWin.mainloop()
