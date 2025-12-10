@@ -1,4 +1,4 @@
 # scriptE.py
 
 strng = "apples"
-print(string, string, string)
+print(strng, strng, strng)#we removed string which was not defined and changed it to strng
