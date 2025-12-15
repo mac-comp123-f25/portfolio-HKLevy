@@ -1,0 +1,12 @@
+Requirements:
+A sophisticated turtle graphic that demonstrates independent learning
+Use variables, conditionals, loops, and functions
+Respond to user input
+
+IDEA
+mandala
+somehow use polar coordinate stuff
+user input can be colors
+can use the color shading to slowly shift the color of the mandala from inside to out
+this might be something with the number of "layers" in the mandala
+
